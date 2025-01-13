@@ -30,9 +30,9 @@ TIME_ZONE = "UTC"
 LANGUAGE_CODE = "en-us"
 # https://docs.djangoproject.com/en/dev/ref/settings/#languages
 LANGUAGES = [
-    ('en', _('English')),
-    ('fr-fr', _('French')),
-    ('pt-br', _('Portuguese')),
+    ("en", _("English")),
+    ("fr-fr", _("French")),
+    ("pt-br", _("Portuguese")),
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -122,7 +122,9 @@ PASSWORD_HASHERS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -256,6 +258,23 @@ LOGGING = {
             "level": "DEBUG",
             "class": "logging.StreamHandler",
             "formatter": "verbose",
+        },"file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": "allauth_debug.log",
+        },
+
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "INFO",
+            
+        },
+       "allauth": {
+            "handlers": ["file"],
+            "level": "DEBUG",
+            "propagate": True,
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
@@ -270,11 +289,11 @@ if USE_TZ:
 CELERY_BROKER_URL = env("CELERY_BROKER_URL")
 # https://docs.celeryq.dev/en/stable/userguide/configuration.html#std:setting-result_backend
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
-# 
+#
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
-# 
-CELERY_REDIS_BACKEND_USE_SSL= True
-# 
+#
+CELERY_REDIS_BACKEND_USE_SSL = True
+#
 CELERY_BROKER_USE_SSL = True
 # https://docs.celeryq.dev/en/stable/userguide/configuration.html#result-extended
 CELERY_RESULT_EXTENDED = True
@@ -301,7 +320,7 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_WORKER_SEND_TASK_EVENTS = True
 # https://docs.celeryq.dev/en/stable/userguide/configuration.html#std-setting-task_send_sent_event
 CELERY_TASK_SEND_SENT_EVENT = True
-# 
+#
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers.DatabaseScheduler"
 # django-allauth
 # ------------------------------------------------------------------------------
@@ -319,12 +338,17 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 # https://docs.allauth.org/en/latest/account/configuration.html
 ACCOUNT_ADAPTER = "front.users.adapters.AccountAdapter"
 # https://docs.allauth.org/en/latest/account/forms.html
-ACCOUNT_FORMS = {"signup": "front.users.forms.UserSignupForm"}
+ACCOUNT_FORMS = {
+    "signup": "front.users.forms.UserSignupForm",
+    "reset_password": "front.users.forms.PasswordResetForm",
+}
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_ADAPTER = "front.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_FORMS = {"signup": "front.users.forms.UserSocialSignupForm"}
-
+# Prevent showing the conset page
+SOCIALACCOUNT_LOGIN_ON_GET = True
+LOGOUT_ON_GET = True
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         # For each OAuth based provider, either add a ``SocialApp``
@@ -380,10 +404,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
 }
 
-
-SOCIALACCOUNT_LOGIN_ON_GET = True
-LOGOUT_ON_GET = True
 # django-rest-framework
+
 # -------------------------------------------------------------------------------
 # django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
 REST_FRAMEWORK = {

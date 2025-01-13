@@ -1,13 +1,9 @@
-from allauth.account.forms import ResetPasswordForm
 from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
 from django.contrib.auth import forms as admin_forms
-from django.forms import BooleanField
-from django.forms import CharField
-from django.forms import EmailField
-from django.forms import Form
-from django.forms import widgets
+from django.forms import EmailField, Form, CharField, widgets, BooleanField
 from django.utils.translation import gettext_lazy as _
+from allauth.account.forms import ResetPasswordForm
 
 from .models import User
 
@@ -39,7 +35,6 @@ class UserSignupForm(SignupForm):
     Default fields will be added automatically.
     Check UserSocialSignupForm for accounts created from social.
     """
-
     password_show = BooleanField(
         required=False,
         widget=widgets.CheckboxInput(),
@@ -53,7 +48,6 @@ class UserSignupForm(SignupForm):
         widget=widgets.CheckboxInput(attrs={"class": "form-check-input"}),
     )
 
-
 class UserSocialSignupForm(SocialSignupForm):
     """
     Renders the form when user has signed up using social accounts.
@@ -61,17 +55,12 @@ class UserSocialSignupForm(SocialSignupForm):
     See UserSignupForm otherwise.
     """
 
-
 class AuthenticationForm(Form):
     email = CharField(
         label=_("Email Address"),
         max_length=254,
         widget=widgets.EmailInput(
-            attrs={
-                "class": "form-control form-control-lg",
-                "id": "signupModalFormLoginEmail",
-                "placeholder": "user.name@front.com",
-            },
+            attrs={"class": "form-control form-control-lg", "placeholder": "Email Address"},
         ),
     )
     password = CharField(
@@ -80,9 +69,7 @@ class AuthenticationForm(Form):
         widget=widgets.PasswordInput(
             attrs={
                 "class": "form-control form-control-lg",
-                "autocomplete": "",
-                "placeholder": "Password",
-                "id": "signupModalFormLoginPassword",
+                "autocomplete": "", "placeholder": "Password",
             },
         ),
     )
@@ -95,10 +82,9 @@ class AuthenticationForm(Form):
 
 
 class PasswordResetForm(ResetPasswordForm):
-    """ ""
+    """""
     Form for user password reset.
     """
-
     email = EmailField(
         label=_("Email Address"),
         max_length=254,

@@ -15,7 +15,6 @@ from .base import INSTALLED_APPS
 from .base import SPECTACULAR_SETTINGS
 from .base import env
 
-DEBUG=True
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key

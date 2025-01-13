@@ -11,3 +11,4 @@ class UsersConfig(AppConfig):
     def ready(self):
         with contextlib.suppress(ImportError):
             import front.users._signals  # noqa: F401
+        return super().ready()

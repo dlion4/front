@@ -1,10 +1,15 @@
 from __future__ import annotations
 
+import contextlib
 import typing
+from contextlib import contextmanager
 
 from allauth.account.adapter import DefaultAccountAdapter
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
 from django.conf import settings
+from django.db import IntegrityError
+
+from front.users.models import Profile
 
 if typing.TYPE_CHECKING:
     from allauth.socialaccount.models import SocialLogin
@@ -46,6 +51,19 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         )
         _handle_profile_creation_update(user, extra_data)
         return user
+
+
+@contextmanager
+def create_profile_form_user(user: User, data: dict):
+    """
+    Context manager to update a user's profile fields safely.
+    """
+    with contextlib.suppress(Exception):
+        profile = user.user_profile
+        profile.first_name = profile.first_name or data.get("first_name", "").strip()
+        if last_name := data.get("last_name", "").strip():
+            profile.last_name = f"{profile.last_name or ''} {last_name}".strip()
+    yield
 
 
 def _handle_profile_creation_update(user, user_data):

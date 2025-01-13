@@ -48,7 +48,6 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
     )
 
-
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
     pass

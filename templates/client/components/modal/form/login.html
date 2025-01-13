@@ -21,7 +21,7 @@
   <!-- End Heading -->
 
   <div class="d-grid gap-2">
-    <a class="btn btn-white btn-lg" href="{% provider_login_url 'google' %}">
+    <a class="btn btn-white btn-lg" href="#">
       <span class="d-flex justify-content-center align-items-center">
         <img
           class="avatar avatar-xss me-2"
@@ -64,7 +64,8 @@
   </div>
   <!-- End Heading -->
 
-  <form class="js-validate needs-validation" novalidate="">
+  <form class="js-validate needs-validation" novalidate="" id="authenticationForm">
+    {% csrf_token %}
     <!-- Form -->
     <div class="mb-3">
       <label class="form-label" for="{{login_form.email.id_for_label}}"

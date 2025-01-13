@@ -15,12 +15,12 @@ from django.utils.timezone import now
 from django.views import View
 from django.views.generic.edit import FormView
 
+
 from .forms import AuthenticationForm
 from .forms import PasswordResetForm
 from .forms import UserSignupForm
 
 
-@method_decorator(login_not_required)
 class LoginView(FormView):
     template_name = "account/login.html"
     form_class = AuthenticationForm
