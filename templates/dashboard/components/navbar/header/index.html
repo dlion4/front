@@ -1,0 +1,62 @@
+{% load static %}
+
+
+<header id="header"
+    class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-container navbar-bordered bg-white">
+    <div class="navbar-nav-wrap">
+        <!-- Logo -->
+        {% include "dashboard/components/navbar/logo.html" %}
+        <!-- End Logo -->
+        <div class="navbar-nav-wrap-content-start">
+            <!-- Navbar Vertical Toggle -->
+            <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler">
+                <i class="bi-arrow-bar-left navbar-toggler-short-align"
+                    data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+                    data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse"></i>
+                <i class="bi-arrow-bar-right navbar-toggler-full-align"
+                    data-bs-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
+                    data-bs-toggle="tooltip" data-bs-placement="right" title="Expand"></i>
+            </button>
+
+            <!-- End Navbar Vertical Toggle -->
+
+            <!-- Search Form -->
+            {% include "dashboard/components/navbar/search.html" %}
+            <!-- End Search Form -->
+        </div>
+
+        <div class="navbar-nav-wrap-content-end">
+            <!-- Navbar -->
+            <ul class="navbar-nav">
+                <li class="nav-item d-none d-sm-inline-block">
+                    <!-- Notification -->
+                    {% include "dashboard/components/navbar/header/notifications.html" %}
+                    <!-- End Notification -->
+                </li>
+
+                <li class="nav-item d-none d-sm-inline-block">
+                    <!-- Apps -->
+                    {% include "dashboard/components/navbar/header/apps.html" %}
+                    <!-- End Apps -->
+                </li>
+
+                <li class="nav-item d-none d-sm-inline-block">
+                    <!-- Activity -->
+                    <button class="btn btn-ghost-secondary btn-icon rounded-circle" type="button"
+                        data-bs-toggle="offcanvas" data-bs-target="#offcanvasActivityStream"
+                        aria-controls="offcanvasActivityStream">
+                        <i class="bi-x-diamond"></i>
+                    </button>
+                    <!-- Activity -->
+                </li>
+
+                <li class="nav-item">
+                    <!-- Account -->
+                    {% include "dashboard/components/navbar/header/account.html" %}
+                    <!-- End Account -->
+                </li>
+            </ul>
+            <!-- End Navbar -->
+        </div>
+    </div>
+</header>

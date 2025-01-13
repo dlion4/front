@@ -4,5 +4,4 @@ setup(
     name="front",
     version="0.1.0",
     packages=find_packages(exclude=[]),
-    python_requires=">=3.12",
 )

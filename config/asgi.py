@@ -19,6 +19,7 @@ from django.core.asgi import get_asgi_application
 # front directory.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 sys.path.append(str(BASE_DIR / "front"))
+sys.path.append(str(BASE_DIR / "apps"))
 
 # If DJANGO_SETTINGS_MODULE is unset, default to the local settings
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")

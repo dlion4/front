@@ -1,0 +1,103 @@
+{% load static socialaccount %}
+
+<div id="signupModalFormLogin" style="display: none; opacity: 0">
+  <!-- Heading -->
+  <div class="text-center mb-7">
+    <h4>Log in</h4>
+    <p>
+      Don't have an account yet?
+      <a
+        class="js-animation-link"
+        href="javascript:;"
+        role="button"
+        data-hs-show-animation-options='{
+                           "targetSelector": "#signupModalFormSignup",
+                           "groupName": "idForm"
+                         }'
+        >Sign up here</a
+      >
+    </p>
+  </div>
+  <!-- End Heading -->
+
+  <div class="d-grid gap-2">
+    <a class="btn btn-white btn-lg" href="{% provider_login_url 'google' %}">
+      <span class="d-flex justify-content-center align-items-center">
+        <img
+          class="avatar avatar-xss me-2"
+          src="{% static 'client/svg/brands/google-icon.svg' %}"
+          alt="Image Description"
+        />
+        Log in with Google
+      </span>
+    </a>
+
+    <a
+      class="js-animation-link btn btn-primary btn-lg"
+      href="#"
+      data-hs-show-animation-options='{
+                         "targetSelector": "#signupModalFormLoginWithEmail",
+                         "groupName": "idForm"
+                       }'
+      >Log in with Email</a
+    >
+  </div>
+</div>
+
+<div id="signupModalFormLoginWithEmail" style="display: none; opacity: 0">
+  <!-- Heading -->
+  <div class="text-center mb-7">
+    <h4>Log in</h4>
+    <p>
+      Don't have an account yet?
+      <a
+        class="js-animation-link"
+        href="javascript:;"
+        role="button"
+        data-hs-show-animation-options='{
+                           "targetSelector": "#signupModalFormSignup",
+                           "groupName": "idForm"
+                         }'
+        >Sign up here</a
+      >
+    </p>
+  </div>
+  <!-- End Heading -->
+
+  <form class="js-validate needs-validation" novalidate="">
+    <!-- Form -->
+    <div class="mb-3">
+      <label class="form-label" for="{{login_form.email.id_for_label}}"
+        >{{login_form.email.label}}</label
+      >
+      {{login_form.email}}
+      <span class="invalid-feedback">Please enter a valid email address.</span>
+    </div>
+    <!-- End Form -->
+
+    <!-- Form -->
+    <div class="mb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <label class="form-label" for="{{login_form.password.id_for_label}}"
+          >{{login_form.password.label}}</label
+        >
+        <a
+          class="js-animation-link form-label-link"
+          href="javascript:;"
+          data-hs-show-animation-options='{
+                         "targetSelector": "#signupModalFormResetPassword",
+                         "groupName": "idForm"
+                       }'
+          >Forgot Password?</a
+        >
+      </div>
+
+      {{login_form.password}}
+      <span class="invalid-feedback">Please enter a valid password.</span>
+    </div>
+    <!-- End Form -->
+    <div class="d-grid mb-3">
+      <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+    </div>
+  </form>
+</div>

@@ -1,7 +1,12 @@
+from allauth.account.forms import ResetPasswordForm
 from allauth.account.forms import SignupForm
 from allauth.socialaccount.forms import SignupForm as SocialSignupForm
 from django.contrib.auth import forms as admin_forms
+from django.forms import BooleanField
+from django.forms import CharField
 from django.forms import EmailField
+from django.forms import Form
+from django.forms import widgets
 from django.utils.translation import gettext_lazy as _
 
 from .models import User
@@ -35,6 +40,19 @@ class UserSignupForm(SignupForm):
     Check UserSocialSignupForm for accounts created from social.
     """
 
+    password_show = BooleanField(
+        required=False,
+        widget=widgets.CheckboxInput(),
+    )
+    accept_terms = BooleanField(
+        required=False,
+        label="""
+        I have read and accept the
+        <a class="text-dark-emphasis" role='button'>Privacy Policy</a>""",
+        help_text="You must accept the terms and conditions.",
+        widget=widgets.CheckboxInput(attrs={"class": "form-check-input"}),
+    )
+
 
 class UserSocialSignupForm(SocialSignupForm):
     """
@@ -42,3 +60,49 @@ class UserSocialSignupForm(SocialSignupForm):
     Default fields will be added automatically.
     See UserSignupForm otherwise.
     """
+
+
+class AuthenticationForm(Form):
+    email = CharField(
+        label=_("Email Address"),
+        max_length=254,
+        widget=widgets.EmailInput(
+            attrs={
+                "class": "form-control form-control-lg",
+                "id": "signupModalFormLoginEmail",
+                "placeholder": "user.name@front.com",
+            },
+        ),
+    )
+    password = CharField(
+        label=_("Password"),
+        strip=False,
+        widget=widgets.PasswordInput(
+            attrs={
+                "class": "form-control form-control-lg",
+                "autocomplete": "",
+                "placeholder": "Password",
+                "id": "signupModalFormLoginPassword",
+            },
+        ),
+    )
+    memory = BooleanField(
+        label="Remember for 30 days",
+        initial=False,
+        required=False,
+        widget=widgets.CheckboxInput(attrs={"class": "form-check-input"}),
+    )
+
+
+class PasswordResetForm(ResetPasswordForm):
+    """ ""
+    Form for user password reset.
+    """
+
+    email = EmailField(
+        label=_("Email Address"),
+        max_length=254,
+        widget=widgets.EmailInput(
+            attrs={"class": "form-control form-control-lg", "id": "reset_password"},
+        ),
+    )

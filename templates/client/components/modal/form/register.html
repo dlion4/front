@@ -1,0 +1,119 @@
+{% load static socialaccount widget_tweaks %}
+
+<div id="signupModalFormSignup">
+  <!-- Heading -->
+  <div class="text-center mb-7">
+    <h4>Sign up</h4>
+    <p>
+      Already have an account?
+      <a
+        class="js-animation-link"
+        href="javascript:;"
+        role="button"
+        data-hs-show-animation-options='{
+                           "targetSelector": "#signupModalFormLogin",
+                           "groupName": "idForm"
+                         }'
+        >Log in here</a
+      >
+    </p>
+  </div>
+  <!-- End Heading -->
+
+  <div class="d-grid gap-3">
+    <a class="btn btn-white btn-lg" href="{% provider_login_url 'google' %}">
+      <span class="d-flex justify-content-center align-items-center">
+        <img
+          class="avatar avatar-xss me-2"
+          src="{% static 'client/svg/brands/google-icon.svg' %}"
+          alt="Image Description"
+        />
+        Sign up with Google
+      </span>
+    </a>
+
+    <a
+      class="js-animation-link btn btn-primary btn-lg"
+      href="#"
+      data-hs-show-animation-options='{
+                         "targetSelector": "#signupModalFormSignupWithEmail",
+                         "groupName": "idForm"
+                       }'
+      >Sign up with Email</a
+    >
+
+    <div class="text-center">
+      <p class="small mb-0">
+        By continuing you agree to our
+        <a href="">Terms and Conditions</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div id="signupModalFormSignupWithEmail" style="display: none; opacity: 0">
+  <!-- Heading -->
+  <div class="text-center mb-7">
+    <h4>Sign up</h4>
+    <p>
+      Already have an account?
+      <a
+        class="js-animation-link"
+        href="javascript:;"
+        role="button"
+        data-hs-show-animation-options='{
+                           "targetSelector": "#signupModalFormLogin",
+                           "groupName": "idForm"
+                         }'
+        >Log in here</a
+      >
+    </p>
+  </div>
+  <!-- End Heading -->
+
+  <form class="js-validate need-validate" novalidate="">
+    <!-- Form -->
+    <div class="mb-3">
+      <label class="form-label" for="{{signup_form.email.id_for_label}}"
+        >{{signup_form.email.label}}</label
+      >
+      {{signup_form.email|attr:"class:form-control form-control-lg"|attr:"id:signupModalFormSignupEmail"}}
+      <span class="invalid-feedback">Please enter a valid email address.</span>
+    </div>
+    <!-- End Form -->
+    <!-- Form -->
+    <div class="mb-3">
+      <label class="form-label" for="{{signup_form.password.id_for_label}}"
+        >{{signup_form.password1.label}}</label
+      >
+    {{signup_form.password1|attr:"class:form-control form-control-lg"|attr:"id:signupModalFormSignupEmail"}}
+      <span class="invalid-feedback"
+        >Your password is invalid. Please try again.</span
+      >
+    </div>
+    <!-- End Form -->
+
+    <!-- Form -->
+    <div class="mb-3" data-hs-validation-validate-class="">
+      <label class="form-label" for="{{signup_form.password2.id_For_label}}"
+        >{{signup_form.password2.label}}</label
+      >
+        {{signup_form.password2|attr:"class:form-control form-control-lg"|attr:"id:signupModalFormSignupConfirmPassword"|attr:"data-hs-validation-equal-field:#signupModalFormSignupPassword"}}
+      <span class="invalid-feedback"
+        >Password does not match the confirm password.</span
+      >
+    </div>
+    <!-- End Form -->
+
+    <div class="d-grid mb-3">
+      <button type="submit" class="btn btn-primary btn-lg">Sign up</button>
+    </div>
+
+    <div class="text-center">
+      <p class="small mb-0">
+        By continuing you agree to our
+        <a href="#">Terms and Conditions</a>
+      </p>
+    </div>
+  </form>
+</div>

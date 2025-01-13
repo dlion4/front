@@ -1,0 +1,135 @@
+{% load static %}
+
+
+<!-- JS Plugins Init. -->
+<script>
+    $(document).on('ready', function () {
+        // INITIALIZATION OF DATERANGEPICKER
+        // =======================================================
+        $('.js-daterangepicker').daterangepicker();
+
+        $('.js-daterangepicker-times').daterangepicker({
+            timePicker: true,
+            startDate: moment().startOf('hour'),
+            endDate: moment().startOf('hour').add(32, 'hour'),
+            locale: {
+                format: 'M/DD hh:mm A'
+            }
+        });
+
+        var start = moment();
+        var end = moment();
+
+        function cb(start, end) {
+            $('#js-daterangepicker-predefined .js-daterangepicker-predefined-preview').html(start.format('MMM D') + ' - ' + end.format('MMM D, YYYY'));
+        }
+
+        $('#js-daterangepicker-predefined').daterangepicker({
+            startDate: start,
+            endDate: end,
+            ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        }, cb);
+
+        cb(start, end);
+    });
+
+
+    // INITIALIZATION OF DATATABLES
+    // =======================================================
+    HSCore.components.HSDatatables.init($('#datatable'), {
+        select: {
+            style: 'multi',
+            selector: 'td:first-child input[type="checkbox"]',
+            classMap: {
+                checkAll: '#datatableCheckAll',
+                counter: '#datatableCounter',
+                counterInfo: '#datatableCounterInfo'
+            }
+        },
+        language: {
+            zeroRecords: '<div class="text-center p-4">' +
+                '<img class="mb-3" src="./assets/svg/illustrations/oc-error.png" alt="Image Description" style="width: 10rem;">' +
+                '<p class="mb-0">No data to show</p>' +
+                '</div>'
+        }
+    });
+
+    const datatable = HSCore.components.HSDatatables.getItem(0)
+
+    document.querySelectorAll('.js-datatable-filter').forEach(function (item) {
+        item.addEventListener('change', function (e) {
+            const elVal = e.target.value,
+                targetColumnIndex = e.target.getAttribute('data-target-column-index'),
+                targetTable = e.target.getAttribute('data-target-table');
+
+            HSCore.components.HSDatatables.getItem(targetTable).column(targetColumnIndex).search(elVal !== 'null' ? elVal : '').draw()
+        })
+    })
+</script>
+<script>
+        // JS Plugins Init. -->
+
+        (function () {
+            // ONLY DEV
+            // =======================================================
+            const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
+            const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
+
+            $variants.forEach($item => {
+                if ($item.getAttribute('data-value') === 'dark') {
+                    $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+                    return $item.classList.add('active')
+                }
+
+                $item.classList.remove('active')
+            })
+            // END ONLY DEV
+
+            window.onload = function () {
+
+                try {
+
+                    // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+                    // =======================================================
+                    new HSSideNav('.js-navbar-vertical-aside').init()
+
+                    // INITIALIZATION OF FORM SEARCH
+                    // =======================================================
+                    const HSFormSearchInstance = new HSFormSearch('.js-form-search')
+                    HSFormSearchInstance.getItem(1).on('close', function (el) {
+                        el.classList.remove('top-0')
+                    })
+
+                    document.querySelector('.js-form-search-mobile-toggle').addEventListener('click', e => {
+                        let dataOptions = JSON.parse(e.currentTarget.getAttribute('data-hs-form-search-options')),
+                            $menu = document.querySelector(dataOptions.dropMenuElement)
+
+                        $menu.classList.add('top-0')
+                        $menu.style.left = 0
+                    })
+
+                    // INITIALIZATION OF BOOTSTRAP DROPDOWN
+                    // =======================================================
+                    HSBsDropdown.init()
+
+                    // INITIALIZATION OF CHARTJS
+                    // =======================================================
+                    // TODO: Charts
+            
+                    // INITIALIZATION OF SELECT
+                    // =======================================================
+                    HSCore.components.HSTomSelect.init('.js-select')
+                } catch (error) {
+
+                }
+
+            }
+        })()
+</script>

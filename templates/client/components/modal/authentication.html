@@ -1,0 +1,91 @@
+{% load static socialaccount %}
+
+<div
+  class="modal fade"
+  id="signupModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-close">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <!-- End Header -->
+
+      <!-- Body -->
+      <div class="modal-body p-sm-5">
+        <!-- Log in -->
+        {% include "client/components/modal/form/login.html" %}
+        <!-- End Log in -->
+
+        <!-- End Log in with Modal -->
+
+        <!-- Sign up -->
+        {% include "client/components/modal/form/register.html" %}
+
+        <!-- End Sign up with Modal -->
+
+        <!-- Reset Password -->
+        {% include "client/components/modal/form/resetpassword.html" %}
+
+        <!-- End Reset Password -->
+      </div>
+      <!-- End Body -->
+
+      <!-- Footer -->
+      <div class="modal-footer d-block text-center py-sm-5">
+        <small class="text-cap mb-4">Trusted by the world's best teams</small>
+
+        <div class="w-85 mx-auto">
+          <div class="row justify-content-between">
+            <div class="col">
+              <img
+                class="img-fluid"
+                src="{% static 'client/svg/brands/gitlab-gray.svg' %}"
+                alt="Logo"
+              />
+            </div>
+            <!-- End Col -->
+
+            <div class="col">
+              <img
+                class="img-fluid"
+                src="{% static 'client/svg/brands/fitbit-gray.svg' %}"
+                alt="Logo"
+              />
+            </div>
+            <!-- End Col -->
+
+            <div class="col">
+              <img
+                class="img-fluid"
+                src="{% static 'client/svg/brands/flow-xo-gray.svg' %}"
+                alt="Logo"
+              />
+            </div>
+            <!-- End Col -->
+
+            <div class="col">
+              <img
+                class="img-fluid"
+                src="{% static 'client/svg/brands/layar-gray.svg' %}"
+                alt="Logo"
+              />
+            </div>
+            <!-- End Col -->
+          </div>
+        </div>
+        <!-- End Row -->
+      </div>
+      <!-- End Footer -->
+    </div>
+  </div>
+</div>

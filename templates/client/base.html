@@ -1,0 +1,83 @@
+{% extends "client_layout.html" %}
+{% load static %}
+<!--  -->
+
+{% block content %}
+<!-- Shape -->
+<div class="shape-container">
+  <div class="shape shape-bottom text-primary-dark">
+    <svg
+      width="3000"
+      height="400"
+      viewbox="0 0 3000 400"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M0 400H3000V0L0 400Z" fill="#fff"></path>
+    </svg>
+  </div>
+</div>
+<!-- End Shape -->
+
+<!-- Clients -->
+<div class="bg-primary-dark">
+  <div class="container content-space-b-1 content-space-t-2">
+    <!-- Heading -->
+    <div class="text-center mb-4">
+      <h5 class="text-white">
+        Thousands of world’s leading companies trust Space
+      </h5>
+    </div>
+    <!-- End Heading -->
+
+    <div class="row">
+      <div class="col py-3">
+        <img
+          class="avatar avatar-xl avatar-4x3"
+          src="{% static 'client/svg/brands/vidados-white.svg' %}"
+          alt="Logo"
+        />
+      </div>
+      <!-- End Col -->
+
+      <div class="col py-3">
+        <img
+          class="avatar avatar-xl avatar-4x3"
+          src="{% static 'client/svg/brands/fitbit-white.svg' %}"
+          alt="Logo"
+        />
+      </div>
+      <!-- End Col -->
+
+      <div class="col py-3">
+        <img
+          class="avatar avatar-xl avatar-4x3"
+          src="{% static 'client/svg/brands/forbes-white.svg' %}"
+          alt="Logo"
+        />
+      </div>
+      <!-- End Col -->
+
+      <div class="col py-3">
+        <img
+          class="avatar avatar-xl avatar-4x3"
+          src="{% static 'client/svg/brands/mailchimp-white.svg' %}"
+          alt="Logo"
+        />
+      </div>
+      <!-- End Col -->
+
+      <div class="col py-3">
+        <img
+          class="avatar avatar-xl avatar-4x3"
+          src="{% static 'client/svg/brands/layar-white.svg' %}"
+          alt="Logo"
+        />
+      </div>
+      <!-- End Col -->
+    </div>
+    <!-- End Row -->
+  </div>
+</div>
+<!-- End Clients -->
+{% endblock content %}

@@ -49,7 +49,9 @@ certifi==2024.12.14
     #   requests
     #   sentry-sdk
 cffi==1.17.1
-    # via argon2-cffi-bindings
+    # via
+    #   argon2-cffi-bindings
+    #   cryptography
 cfgv==3.4.0
     # via pre-commit
 charset-normalizer==3.4.1
@@ -87,6 +89,8 @@ crispy-bootstrap5==2024.2
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
 cron-descriptor==1.4.5
     # via django-celery-beat
+cryptography==44.0.0
+    # via jwt
 cssbeautifier==1.15.1
     # via djlint
 decorator==5.1.1
@@ -226,6 +230,8 @@ jsonschema==4.23.0
     # via drf-spectacular
 jsonschema-specifications==2024.10.1
     # via jsonschema
+jwt==1.3.1
+    # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
 kombu==5.4.2
     # via celery
 markupsafe==3.0.2

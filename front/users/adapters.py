@@ -34,15 +34,23 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
     ) -> User:
         """
         Populates user information from social provider info.
-
         See: https://docs.allauth.org/en/latest/socialaccount/advanced.html#creating-and-populating-user-instances
         """
-        user = super().populate_user(request, sociallogin, data)
-        if not user.name:
-            if name := data.get("name"):
-                user.name = name
-            elif first_name := data.get("first_name"):
-                user.name = first_name
-                if last_name := data.get("last_name"):
-                    user.name += f" {last_name}"
+        user: User = super().populate_user(request, sociallogin, data)
+        extra_data: dict = sociallogin.account.extra_data
+        user.username = (
+            user.username or extra_data.get("name") or extra_data.get("login")
+        )
+        user.social_uid = (
+            user.social_uid or extra_data.get("id") or extra_data.get("sub")
+        )
+        _handle_profile_creation_update(user, extra_data)
         return user
+
+
+def _handle_profile_creation_update(user, user_data):
+    print("Handling profile creation/update...")
+    print("user social_uid: ", user.social_uid)
+    print("user_data:", user_data)
+    # 113825375903421253407 -GOOGLE - Uid
+    # 96693702 -GITHUB - Uid

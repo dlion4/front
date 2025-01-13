@@ -1,0 +1,44 @@
+{
+    "name": "front - Project Management System",
+    "short_name": "front",
+    "description": "Streamline your workflow with front, the ultimate project management tool for developers.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4CAF50",
+    "orientation": "any",
+    "scope": "/",
+    "icons": [
+      {
+        "src": "/static/images/favicons/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/static/images/favicons/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "/static/images/favicons/favicon-16x16.png",
+        "sizes": "16x16",
+        "type": "image/png"
+      },
+      {
+        "src": "/static/images/favicons/favicon-32x32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+      }
+    ],
+    "lang": "en",
+    "dir": "ltr",
+    "categories": ["productivity", "project-management", "developer-tools"],
+    "related_applications": [
+      {
+        "platform": "webapp",
+        "url": "https://your-project-url.com/site.webmanifest"
+      }
+    ],
+    "prefer_related_applications": false
+  }
+  
