@@ -51,7 +51,7 @@ dependencies = [
     "django-extensions==3.2.3",
     "django-coverage-plugin==3.1.0",
     "pytest-django==4.8.0",
-    "gunicorn==22.0.0",
+    "gunicorn==23.0.0",
     "psycopg[c]==3.2.1",
     "sentry-sdk==2.10.0",
     "django-storages[s3]==1.14.4",

@@ -193,7 +193,7 @@ frozenlist==1.5.0
     # via
     #   aiohttp
     #   aiosignal
-gunicorn==22.0.0
+gunicorn==23.0.0
     # via
     #   -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\production.in
     #   uvicorn-worker
