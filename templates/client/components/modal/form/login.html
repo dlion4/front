@@ -55,18 +55,24 @@
         href="javascript:;"
         role="button"
         data-hs-show-animation-options='{
-                           "targetSelector": "#signupModalFormSignup",
-                           "groupName": "idForm"
-                         }'
+                          "targetSelector": "#signupModalFormSignup",
+                          "groupName": "idForm"
+                        }'
         >Sign up here</a
       >
     </p>
   </div>
   <!-- End Heading -->
 
-  <form class="js-validate needs-validation" novalidate="" id="authenticationForm">
+  <form
+    class="needs-validation"
+    method="post"
+    action="{% url 'users:login' %}"
+    id="authenticationForm"
+  >
     {% csrf_token %}
     <!-- Form -->
+    <div class="response"></div>
     <div class="mb-3">
       <label class="form-label" for="{{login_form.email.id_for_label}}"
         >{{login_form.email.label}}</label

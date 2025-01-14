@@ -35,6 +35,7 @@ class UserSignupForm(SignupForm):
     Default fields will be added automatically.
     Check UserSocialSignupForm for accounts created from social.
     """
+
     password_show = BooleanField(
         required=False,
         widget=widgets.CheckboxInput(),
@@ -48,6 +49,7 @@ class UserSignupForm(SignupForm):
         widget=widgets.CheckboxInput(attrs={"class": "form-check-input"}),
     )
 
+
 class UserSocialSignupForm(SocialSignupForm):
     """
     Renders the form when user has signed up using social accounts.
@@ -55,12 +57,16 @@ class UserSocialSignupForm(SocialSignupForm):
     See UserSignupForm otherwise.
     """
 
+
 class AuthenticationForm(Form):
     email = CharField(
         label=_("Email Address"),
         max_length=254,
         widget=widgets.EmailInput(
-            attrs={"class": "form-control form-control-lg", "placeholder": "Email Address"},
+            attrs={
+                "class": "form-control form-control-lg",
+                "placeholder": "Email Address",
+            },
         ),
     )
     password = CharField(
@@ -69,7 +75,8 @@ class AuthenticationForm(Form):
         widget=widgets.PasswordInput(
             attrs={
                 "class": "form-control form-control-lg",
-                "autocomplete": "", "placeholder": "Password",
+                "autocomplete": "",
+                "placeholder": "Password",
             },
         ),
     )
@@ -82,13 +89,19 @@ class AuthenticationForm(Form):
 
 
 class PasswordResetForm(ResetPasswordForm):
-    """""
+    """ ""
     Form for user password reset.
     """
+
     email = EmailField(
         label=_("Email Address"),
         max_length=254,
         widget=widgets.EmailInput(
-            attrs={"class": "form-control form-control-lg", "id": "reset_password"},
+            attrs={
+                "class": "form-control form-control-lg",
+                "id": "signupModalFormResetPasswordEmail",
+                "placeholder": "Enter your email address",
+                "aria-label": "Enter your email address",
+            },
         ),
     )

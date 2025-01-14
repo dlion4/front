@@ -42,6 +42,7 @@ class User(AbstractUser):
         null=True,
         help_text=_("Optional username for the user."),
     )
+    site_email = EmailField(max_length=255, blank=True, null=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -54,6 +55,13 @@ class User(AbstractUser):
     @property
     def handle_username(self):
         return self.username or self.email.split("@")[0]
+    @property
+    def handle_site_email(self):
+        return f"{self.handle_username}@front.com"
+    def save(self, *args, **kwargs):
+        if not self.site_email:
+            self.site_email = self.handle_site_email
+        super().save(*args, **kwargs)
 
 
 class Profile(Model):

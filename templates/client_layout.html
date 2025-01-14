@@ -39,6 +39,9 @@
     <meta property="og:image" content="" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{% url 'home' %}" />
+    <!-- jquery -->
+
+    <script src="{% static 'libs/jquery/3.7.1/jquery.min.js' %}"></script>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
@@ -65,19 +68,12 @@
     <!-- ========== HEADER ========== -->
     {% include "client/components/navbar/header.html" %}
     <!-- ========== END HEADER ========== -->
-    {% endblock header %}
-
-    
-    {% block main %}
-      <main id="content" role="main">
-        
-        {% block content %}
-          
-        {% endblock content %}
-          
-      </main>
+    {% endblock header %} {% block main %}
+    <main id="content" role="main">
+      {% block content %} {% endblock content %}
+    </main>
     {% endblock main %}
-      
+
     <!--  -->
 
     {% block modal %}
@@ -142,7 +138,7 @@
         HSBsValidation.init(".js-validate", {
           onSubmit: (data) => {
             data.event.preventDefault();
-            alert("Submited");
+            
           },
         });
         new HSGoTo(".js-go-to");
@@ -150,5 +146,7 @@
         const typed = HSCore.components.HSTyped.init(".js-typedjs");
       })();
     </script>
+    <!--  -->
+    {% render_bundle "authentication" "js" %}
   </body>
 </html>

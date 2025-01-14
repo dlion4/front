@@ -4,6 +4,7 @@
         "authtoken",
         "corsheaders",
         "socialaccount",
-        "sociallogin"
+        "sociallogin",
+        "uidb"
     ]
 }

@@ -6,7 +6,7 @@ from django.urls import path
 from ._authorize import LoginView
 from ._authorize import LogoutView
 from .actions import views
-from ._authorize import UserRegistrationView
+from ._authorize import UserRegistrationView, PasswordResetRequestView
 from .views import user_detail_view
 from .views import user_redirect_view
 from .views import user_update_view
@@ -26,6 +26,38 @@ urlpatterns = [
             "time": str(time.time()),
         },
         name="register",
+    ),
+    path(
+        # NOTE: This is not best practice
+        "password/",
+        include(
+            [
+                path(
+                    "reset",
+                    include(
+                        [
+                            path(
+                                "reset/",
+                                PasswordResetRequestView.as_view(),
+                                name="password_reset_request_view",
+                            ),
+                            path(
+                                "reset/<uidb64>/<token>/",
+                                include(
+                                    [
+                                        path(
+                                            "",
+                                            views.password_reset_confirm_view,
+                                            name="password_reset_confirm_view",
+                                        ),
+                                    ],
+                                ),
+                            ),
+                        ],
+                    ),
+                ),
+            ],
+        ),
     ),
     # Add this line to your urlpatterns
     path(

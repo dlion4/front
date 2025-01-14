@@ -109,7 +109,7 @@
               href="#"
               role="button"
               aria-expanded="false"
-              >Docs: {{request.user}}</a
+              >Docs</a
             >
 
             <!-- Mega Menu -->
@@ -201,10 +201,37 @@
               </a>
             </div>
           </li>
-
+          {% if not request.user.is_authenticated %}
           <li class="nav-divider"></li>
 
+          {% endif %}
+          <!--  -->
+ {% if request.user.is_authenticated %}
           <!-- Log in -->
+          <li class="nav-item">
+            <a
+              class="js-animation-link d-lg-none btn btn-primary"
+              href="{% url 'dashboard:home' %}"
+            >
+              <i class="bi-person-circle me-1"></i> Dashboard
+            </a>
+          </li>
+
+          <!-- Sign up -->
+          <li class="nav-item">
+            <a
+              class="js-animation-link d-lg-none btn btn-primary"
+              href="{% url 'dashboard:home' %}"
+            >
+              <i class="bi-person-circle me-1"></i> Dashboard
+            </a>
+          </li>
+          </li>
+
+          {% else %}
+         
+
+            <!-- Log in -->
           <li class="nav-item">
             <a
               class="js-animation-link d-lg-none btn btn-primary"
@@ -237,6 +264,10 @@
               <i class="bi-person-circle me-1"></i> Sign up
             </a>
           </li>
+          <!--  -->
+          {% endif %}
+            
+
         </ul>
       </div>
     </nav>

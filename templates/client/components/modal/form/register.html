@@ -71,8 +71,16 @@
   </div>
   <!-- End Heading -->
 
-  <form class="js-validate need-validate" novalidate="">
+  <form
+    class="js-validate need-validate"
+    method="post"
+    action="{% url 'users:register' %}"
+    id="signupForm"
+  >
+    {% csrf_token %}
     <!-- Form -->
+    <div class="response"></div>
+
     <div class="mb-3">
       <label class="form-label" for="{{signup_form.email.id_for_label}}"
         >{{signup_form.email.label}}</label
@@ -86,7 +94,7 @@
       <label class="form-label" for="{{signup_form.password.id_for_label}}"
         >{{signup_form.password1.label}}</label
       >
-    {{signup_form.password1|attr:"class:form-control form-control-lg"|attr:"id:signupModalFormSignupEmail"}}
+      {{signup_form.password1|attr:"class:form-control form-control-lg"|attr:"id:signupModalFormSignupEmail"}}
       <span class="invalid-feedback"
         >Your password is invalid. Please try again.</span
       >
@@ -98,7 +106,7 @@
       <label class="form-label" for="{{signup_form.password2.id_For_label}}"
         >{{signup_form.password2.label}}</label
       >
-        {{signup_form.password2|attr:"class:form-control form-control-lg"|attr:"id:signupModalFormSignupConfirmPassword"|attr:"data-hs-validation-equal-field:#signupModalFormSignupPassword"}}
+      {{signup_form.password2|attr:"class:form-control form-control-lg"|attr:"id:signupModalFormSignupConfirmPassword"|attr:"data-hs-validation-equal-field:#signupModalFormSignupPassword"}}
       <span class="invalid-feedback"
         >Password does not match the confirm password.</span
       >

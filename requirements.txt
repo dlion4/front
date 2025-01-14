@@ -4,6 +4,12 @@
 #
 #    pip-compile --output-file='.\requirements.txt' '.\requirements/local.in'
 #
+aiohappyeyeballs==2.4.4
+    # via aiohttp
+aiohttp==3.11.11
+    # via upstash-redis
+aiosignal==1.3.2
+    # via aiohttp
 alabaster==0.7.16
     # via sphinx
 amqp==5.3.1
@@ -25,6 +31,7 @@ asttokens==3.0.0
     # via stack-data
 attrs==24.3.0
     # via
+    #   aiohttp
     #   jsonschema
     #   referencing
 babel==2.16.0
@@ -154,6 +161,8 @@ django-timezone-field==7.1
     # via django-celery-beat
 django-webpack-loader==3.1.0
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
+django-widget-tweaks==1.5.0
+    # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
 djangorestframework==3.15.2
     # via
     #   -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
@@ -180,6 +189,10 @@ filelock==3.16.1
     # via virtualenv
 flower==2.0.1
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
+frozenlist==1.5.0
+    # via
+    #   aiohttp
+    #   aiosignal
 gunicorn==22.0.0
     # via
     #   -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\production.in
@@ -202,6 +215,7 @@ idna==3.10
     # via
     #   anyio
     #   requests
+    #   yarl
 imagesize==1.4.1
     # via sphinx
 inflection==0.5.1
@@ -240,6 +254,10 @@ markupsafe==3.0.2
     #   werkzeug
 matplotlib-inline==0.1.7
     # via ipython
+multidict==6.1.0
+    # via
+    #   aiohttp
+    #   yarl
 mypy==1.10.0
     # via
     #   -r .\requirements/local.in
@@ -273,6 +291,10 @@ prompt-toolkit==3.0.48
     # via
     #   click-repl
     #   ipython
+propcache==0.2.1
+    # via
+    #   aiohttp
+    #   yarl
 psycopg[c]==3.2.1
     # via
     #   -r .\requirements/local.in
@@ -333,6 +355,7 @@ requests==2.32.3
     #   django-anymail
     #   djangorestframework-stubs
     #   sphinx
+    #   upstash-redis
 rpds-py==0.22.3
     # via
     #   jsonschema
@@ -412,6 +435,8 @@ tzdata==2024.2
     #   django-celery-beat
     #   kombu
     #   psycopg
+upstash-redis==1.2.0
+    # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
 uritemplate==4.1.1
     # via drf-spectacular
 urllib3==2.3.0
@@ -454,3 +479,5 @@ werkzeug[watchdog]==3.0.3
     #   werkzeug
 whitenoise==6.7.0
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
+yarl==1.18.3
+    # via aiohttp

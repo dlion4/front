@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     project: path.resolve(__dirname, '../front/static/js/project'),
     vendors: path.resolve(__dirname, '../front/static/js/vendors'),
+    authentication: path.resolve(__dirname, '../front/static/js/authentication'),
   },
   output: {
     path: path.resolve(
