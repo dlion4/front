@@ -90,6 +90,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "front.users",
     "apps.core",
+    "apps.profiles",
+    "apps.enterprise",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -109,7 +111,7 @@ AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 LOGIN_REDIRECT_URL = "/dashboard/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
-LOGIN_URL = "users:login"
+LOGIN_URL = "home"
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers
@@ -192,6 +194,7 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "front.users.context_processors.allauth_settings",
+                "apps.core.context_processors.core_context_processor_data",
             ],
         },
     },

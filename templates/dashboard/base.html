@@ -1,11 +1,46 @@
 {% extends "dashboard_layout.html" %}
 
 <!--  -->
-{% block headerScripts %}
-{% endblock headerScripts %}
+{% block headerScripts %} {% endblock headerScripts %}
 
 <!--  -->
 {% block content %}
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <!--  -->
+
+    {% block pageHeader %}
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row align-items-center">
+        <div class="col-sm mb-2 mb-sm-0">
+          <h1 class="page-header-title">Dashboard</h1>
+        </div>
+        <!-- End Col -->
+
+        <div class="col-sm-auto">
+          <a
+            class="btn btn-primary"
+            href="javascript:;"
+            data-bs-toggle="modal"
+            data-bs-target="#inviteUserModal"
+          >
+            <i class="bi-person-plus-fill me-1"></i> Project
+          </a>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Page Header -->
+    {% endblock pageHeader %}
+
+    <!--  -->
+
+    {% block main %} {% endblock main %}
+  </div>
+</main>
 {% endblock content %}
 
 <!--  -->

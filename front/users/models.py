@@ -6,7 +6,7 @@ from django.db.models import CASCADE
 from django.db.models import CharField
 from django.db.models import EmailField, BigIntegerField
 from django.db.models import Model
-from django.db.models import OneToOneField, URLField
+from django.db.models import OneToOneField, URLField, BigIntegerField
 from django.db.models import UUIDField
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -30,7 +30,7 @@ class User(AbstractUser):
         default=uuid.uuid4,  # Use callable, not function call
         db_comment="Unique UUID for the user instead of a numeric ID",
     )
-    social_uid = BigIntegerField(_("Social UUID"),blank=True, null=True)
+    social_uid = BigIntegerField(_("Social UUID"), blank=True, null=True)
     email = EmailField(
         _("email address"),
         unique=True,
@@ -42,7 +42,7 @@ class User(AbstractUser):
         null=True,
         help_text=_("Optional username for the user."),
     )
-    site_email = EmailField(max_length=255, blank=True, null=True)
+    site_email = EmailField(max_length=255, blank=True, null=True)  # noqa: DJ001
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -55,9 +55,11 @@ class User(AbstractUser):
     @property
     def handle_username(self):
         return self.username or self.email.split("@")[0]
+
     @property
     def handle_site_email(self):
         return f"{self.handle_username}@front.com"
+
     def save(self, *args, **kwargs):
         if not self.site_email:
             self.site_email = self.handle_site_email
@@ -76,14 +78,26 @@ class Profile(Model):
     )
     user = OneToOneField(User, on_delete=CASCADE, related_name="user_profile")
     first_name = CharField(  # noqa: DJ001
-        _("First Name"), max_length=100, blank=True, null=True,
+        _("First Name"),
+        max_length=100,
+        blank=True,
+        null=True,
     )
     last_name = CharField(  # noqa: DJ001
         _("Last Name"), max_length=100, blank=True, null=True  # noqa: COM812
     )
     avatar_url = URLField(  # noqa: DJ001
-        _("Social Avatar"), max_length=255, blank=True, null=True,
+        _("Social Avatar"),
+        max_length=255,
+        blank=True,
+        null=True,
     )
+    organizations_count = BigIntegerField(default=0)
+    plan = CharField(max_length=1, choices=(
+        ("F", "Freemium"), # Only 1 Organization with 2 Projects
+        ("S", "Standard"), # 2 Organizations with 4 Projects
+        ("P", "Pro"), # 4 Organizations with 10 Projects
+    ), default="F")
 
     class Meta:
         """Meta definition for Profile."""
@@ -95,11 +109,15 @@ class Profile(Model):
     def __str__(self):
         """Unicode representation of Profile."""
         return f"{self.user.username}"
-
-
-
     def get_absolute_url(self):
         """Return absolute url for Profile."""
         return ""
 
-    # TODO: Define custom methods here
+    @property
+    def full_name(self):
+        return (
+            f"{self.first_name} {self.last_name}".title()
+            if self.first_name
+            else f"{self.user.handle_username}".title()
+        )
+

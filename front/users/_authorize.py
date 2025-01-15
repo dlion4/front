@@ -73,7 +73,6 @@ class LoginView(FormView):
 
 
 class LogoutView(AllauthLogoutView):
-
     @method_decorator(csrf_exempt)
     @method_decorator(require_POST)
     def dispatch(self, request, *args, **kwargs):

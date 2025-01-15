@@ -1,0 +1,32 @@
+{% extends "dashboard/base.html" %}
+<!--  -->
+{% load static humanize i18n %}
+<!--  -->
+
+{% block pageHeader %}
+<div class="page-header">
+  <div class="row align-items-end">
+    <div class="col-sm mb-2 mb-sm-0">
+      <h1 class="page-header-title">API Keys</h1>
+    </div>
+    <div class="col-sm-auto">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#createAKIKeyModal"
+      >
+        <i class="bi-plus me-1"></i> Create key
+      </button>
+    </div>
+  </div>
+  <!-- End Row -->
+</div>
+{% endblock pageHeader %}
+<!--  -->
+{% block main %}
+
+<!-- End Stats -->
+{% endblock main %}
+<!--  -->
+

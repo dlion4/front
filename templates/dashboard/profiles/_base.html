@@ -1,0 +1,235 @@
+{% extends "dashboard_layout.html" %} {% load static %}
+<!--  -->
+{% block headerScripts %} {% endblock headerScripts %}
+
+<!--  -->
+{% block content %}
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <!--  -->
+
+    <div class="row justify-content-lg-center">
+      <div class="col-lg-10">
+        <!-- Profile Cover -->
+        <div class="profile-cover">
+          <div class="profile-cover-img-wrapper">
+            <img
+              id="profileCoverImg"
+              class="profile-cover-img"
+              src="{% static 'assets/img/1920x400/img1.jpg' %}"
+              alt="Image Description"
+            />
+
+            <!-- Custom File Cover -->
+            <div class="profile-cover-content profile-cover-uploader p-3">
+              <input
+                type="file"
+                class="js-file-attach profile-cover-uploader-input"
+                id="profileCoverUplaoder"
+                data-hs-file-attach-options='{
+                            "textTarget": "#profileCoverImg",
+                            "mode": "image",
+                            "targetAttr": "src",
+                            "allowTypes": [".png", ".jpeg", ".jpg"]
+                         }'
+              />
+              <label
+                class="profile-cover-uploader-label btn btn-sm btn-white"
+                for="profileCoverUplaoder"
+              >
+                <i class="bi-camera-fill"></i>
+                <span class="d-none d-sm-inline-block ms-1">Upload Cover</span>
+              </label>
+            </div>
+            <!-- End Custom File Cover -->
+          </div>
+        </div>
+        <!-- End Profile Cover -->
+
+        <!-- Profile Header -->
+        <div class="text-center mb-5">
+          <!-- Avatar -->
+          <label
+            class="avatar avatar-xxl avatar-circle avatar-uploader profile-cover-avatar"
+            for="editAvatarUploaderModal"
+          >
+            <img
+              id="editAvatarImgModal"
+              class="avatar-img"
+              src="{% static 'assets/img/160x160/img9.jpg' %}"
+              alt="Image Description"
+            />
+
+            <input
+              type="file"
+              class="js-file-attach avatar-uploader-input"
+              id="editAvatarUploaderModal"
+              data-hs-file-attach-options='{
+                          "textTarget": "#editAvatarImgModal",
+                          "mode": "image",
+                          "targetAttr": "src",
+                          "allowTypes": [".png", ".jpeg", ".jpg"]
+                       }'
+            />
+
+            <span class="avatar-uploader-trigger">
+              <i class="bi-pencil-fill avatar-uploader-icon shadow-sm"></i>
+            </span>
+          </label>
+          <!-- End Avatar -->
+
+          <h1 class="page-header-title">
+            {{profile.full_name}}
+            <!-- <i
+              class="bi-patch-check-fill fs-2 text-primary"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Top endorsed"
+            ></i> -->
+            <i
+              class="bi-patch-exclamation-fill fs-2 text-danger"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Unverified"
+            ></i>
+          </h1>
+          <!-- List -->
+          <ul class="list-inline list-px-2">
+            <li class="list-inline-item">
+              <i class="bi-building me-1"></i>
+              <span>Htmlstream</span>
+            </li>
+
+            <li class="list-inline-item">
+              <i class="bi-geo-alt me-1"></i>
+              <a href="#">San Francisco,</a>
+              <a href="#">US</a>
+            </li>
+
+            <li class="list-inline-item">
+              <i class="bi-calendar-week me-1"></i>
+              <span>Joined {{profile.user.date_joined|date:"M Y"}}</span>
+            </li>
+          </ul>
+          <!-- End List -->
+        </div>
+
+        <!-- End Profile Header -->
+
+        <!-- Nav -->
+        <div class="js-nav-scroller hs-nav-scroller-horizontal mb-5">
+          <span class="hs-nav-scroller-arrow-prev" style="display: none">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+              <i class="bi-chevron-left"></i>
+            </a>
+          </span>
+
+          <span class="hs-nav-scroller-arrow-next" style="display: none">
+            <a class="hs-nav-scroller-arrow-link" href="javascript:;">
+              <i class="bi-chevron-right"></i>
+            </a>
+          </span>
+
+          <ul class="nav nav-tabs align-items-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Teams</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="">File Manager</a>
+            </li>
+
+            <li class="nav-item ms-auto">
+              <div class="d-flex gap-2">
+                <!-- Form Check -->
+                <div class="form-check form-check-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="connectCheckbox"
+                  />
+                  <label
+                    class="form-check-label btn btn-sm"
+                    for="connectCheckbox"
+                  >
+                    <span class="form-check-default">
+                      <i class="bi-person-plus-fill"></i> Connect
+                    </span>
+                    <span class="form-check-active">
+                      <i class="bi-check-lg me-2"></i> Connected
+                    </span>
+                  </label>
+                </div>
+                <!-- End Form Check -->
+
+                <a class="btn btn-icon btn-sm btn-white" href="#">
+                  <i class="bi-list-ul me-1"></i>
+                </a>
+
+                <!-- Dropdown -->
+                <div class="dropdown nav-scroller-dropdown">
+                  <button
+                    type="button"
+                    class="btn btn-white btn-icon btn-sm"
+                    id="profileDropdown"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bi-three-dots-vertical"></i>
+                  </button>
+
+                  <div
+                    class="dropdown-menu dropdown-menu-end mt-1"
+                    aria-labelledby="profileDropdown"
+                  >
+                    <span class="dropdown-header">Settings</span>
+
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-share-fill dropdown-item-icon"></i> Share
+                      profile
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-slash-circle dropdown-item-icon"></i> Block
+                      page and profile
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-info-circle dropdown-item-icon"></i> Suggest
+                      edits
+                    </a>
+
+                    <div class="dropdown-divider"></div>
+
+                    <span class="dropdown-header">Feedback</span>
+
+                    <a class="dropdown-item" href="#">
+                      <i class="bi-flag dropdown-item-icon"></i> Report
+                    </a>
+                  </div>
+                </div>
+                <!-- End Dropdown -->
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- End Nav -->
+        {% block main %} {% endblock main %}
+      </div>
+    </div>
+
+    {% block pageHeader %}
+    <!-- Page Header -->
+
+    <!-- End Page Header -->
+    {% endblock pageHeader %}
+
+    <!--  -->
+  </div>
+</main>
+{% endblock content %}
+
+<!--  -->

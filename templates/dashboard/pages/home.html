@@ -1,1 +1,222 @@
 {% extends "dashboard/base.html" %}
+<!--  -->
+{% load static humanize i18n %}
+<!--  -->
+{% if not profile.profile_organizations %}
+<!--  -->
+{% block pageHeader %} {% endblock pageHeader %}
+<!--  -->
+{% endif %}
+<!--  -->
+{% block main %}
+<!--  -->
+{% if not profile.profile_organizations.exists %}
+<div class="row justify-content-sm-center text-center pt-10">
+  <div class="col-sm-7 col-md-5">
+    <img
+      class="img-fluid mb-5"
+      src="{% static 'assets/svg/illustrations-light/oc-collaboration.svg' %}"
+      alt="Image Description"
+      data-hs-theme-appearance="dark"
+    />
+    <h1>Hello, nice to see you!</h1>
+    <p>You are now minutes away from creativity than ever before. Enjoy!</p>
+    <a
+      class="btn btn-primary"
+      href="#"
+      data-bs-toggle="modal"
+      data-bs-target="#createOrganizationModal"
+      >Start by creating organization
+    </a>
+  </div>
+</div>
+{% else %}
+<!-- Stats -->
+<!-- Get the profiles first organization unless explicitly he/she select another organization -->
+<!-- {% if profile.selected_organization %}
+    {% with selected_organization=profile.selected_organization %}
+      {% include 'dashboard/includes/_stats.html' %}
+    {% endwith %}
+  {% else %}
+    {% with selected_organization=profile.profile_organizations.first %}
+      {% include 'dashboard/includes/_stats.html' %}
+    {% endwith %}
+  {% endif %} -->
+<!-- End Stats -->
+<!-- Top 5 most recent referrals -->
+<div class="row col-lg-divider">
+  <div class="col-lg-4">
+    <!-- Card -->
+    <div class="text-center">
+      <img
+        class="avatar avatar-xl avatar-4x3 mb-4"
+        src="{% static 'assets/svg/illustrations-light/oc-megaphone.svg' %}"
+        alt="Image Description"
+        data-hs-theme-appearance="dark"
+        style="min-height: 6rem"
+      />
+      <span class="text-cap text-body">Number of referrals</span>
+      <span class="d-block display-4 text-dark mb-2">150</span>
+      <div class="row col-divider">
+        <div class="col text-end">
+          <span class="d-block fw-semibold text-success">
+            <i class="bi-graph-up"></i>
+            12%
+          </span>
+          <span class="d-block">change</span>
+        </div>
+        <!-- End Col -->
+        <div class="col text-start">
+          <span class="d-block fw-semibold text-dark">25</span>
+          <span class="d-block">last week</span>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Card -->
+  </div>
+  <div class="col-lg-4">
+    <!-- Card -->
+    <div class="text-center">
+      <img
+        class="avatar avatar-xl avatar-4x3 mb-4"
+        src="{% static 'assets/svg/illustrations-light/oc-money-profits.svg' %}"
+        alt="Image Description"
+        data-hs-theme-appearance="dark"
+        style="min-height: 6rem"
+      />
+      <span class="text-cap text-body">Amount earned</span>
+      <span class="d-block display-4 text-dark mb-2">$7,253.00</span>
+      <div class="row col-divider">
+        <div class="col text-end">
+          <span class="d-block fw-semibold text-success">
+            <i class="bi-graph-up"></i>
+            5.6%
+          </span>
+          <span class="d-block">change</span>
+        </div>
+        <!-- End Col -->
+        <div class="col text-start">
+          <span class="d-block fw-semibold text-dark">$582.00</span>
+          <span class="d-block">last week</span>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Card -->
+  </div>
+  <div class="col-lg-4">
+    <!-- Card -->
+    <div class="text-center">
+      <img
+        class="avatar avatar-xl avatar-4x3 mb-4"
+        src="{% static 'assets/svg/illustrations-light/oc-growing.svg' %}"
+        alt="Image Description"
+        data-hs-theme-appearance="dark"
+        style="min-height: 6rem"
+      />
+      <span class="text-cap text-body">Referral completed</span>
+      <span class="d-block display-4 text-dark mb-2">25</span>
+      <div class="row col-divider">
+        <div class="col text-end">
+          <span class="d-block fw-semibold text-danger">
+            <i class="bi-graph-down"></i>
+            2.3%
+          </span>
+          <span class="d-block">change</span>
+        </div>
+        <!-- End Col -->
+        <div class="col text-start">
+          <span class="d-block fw-semibold text-dark">7</span>
+          <span class="d-block">last week</span>
+        </div>
+        <!-- End Col -->
+      </div>
+      <!-- End Row -->
+    </div>
+    <!-- End Card -->
+  </div>
+</div>
+{% endif %}
+<!-- End Stats -->
+{% endblock main %}
+<!--  -->
+{% block scripts %}
+<script>
+  $(document).ready(function () {
+    var fmVar$ = {
+      fields: {
+        organization_name: {
+          validators: {
+            notEmpty: {
+              message: "Organization name is required",
+            },
+          },
+        },
+        organization_description: {
+          validators: {
+            notEmpty: {
+              message: "Organization description is required",
+            },
+          },
+        },
+      },
+
+      init: function () {
+        // create organization here
+        var organizationFm$ = $("form.create_organization");
+        this.action(organizationFm$, null, true, (organizationFm$) => {
+          var fm$ = organizationFm$;
+          console.log(fm$);
+        });
+      },
+
+      action: function (fm, responseCard, show = true, callBack) {
+        $(fm)
+          .off("submit")
+          .on("submit", function (event) {
+            event.preventDefault();
+            var form = $(this);
+            if (!responseCard) {
+              responseCard = form.find(".response");
+            }
+            var data = new FormData(this);
+            var btn = form.find("button[type=submit]");
+            btn.prop("disabled", true);
+            var btnText = btn.text();
+            btn.text("Loading...");
+            $.ajax({
+              type: form.attr("method"),
+              url: form.attr("action"),
+              data: data,
+              contentType: false,
+              processData: false,
+              success: function (response, textStatus, jqXHR) {
+                if (show) {
+                  responseCard.html(response);
+                }
+                console.log(response);
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+              
+                console.log(jqXHR.responseJSON);
+                    btn.prop("disabled", false);
+                btn.text(btnText);
+              },
+              complete: function () {
+                btn.prop("disabled", false);
+                btn.text(btnText);
+                if (typeof callBack === "function") {
+                  callBack(form);
+                }
+              },
+            });
+          });
+      },
+    };
+    fmVar$.init();
+  });
+</script>
+{% endblock scripts %}

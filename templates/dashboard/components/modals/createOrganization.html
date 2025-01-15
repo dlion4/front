@@ -1,0 +1,79 @@
+{% load static %}
+<div
+    class="modal fade"
+    id="createOrganizationModal"
+    tabindex="-1"
+    aria-hidden="true"
+    aria-labelledby="createOrganizationModalLabel"
+>
+    <div class="modal-dialog modal-dialog-centered">
+        <form method="post" action="{% url 'enterprise:actions:create_organization_view' %}" class="create_organization">
+            {% csrf_token %}
+            <div class="modal-content">
+                <div class="modal-close">
+                    <button
+                        type="button"
+                        class="btn btn-ghost-secondary btn-icon btn-sm"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    >
+                        <i class="bi-x-lg"></i>
+                    </button>
+                </div>
+                <div class="modal-body p-sm-5">
+                    <div class="text-center">
+                        <h4 class="h1">Welcome to Front</h4>
+                        <p>Spin your organization in no time.</p>
+                    </div>
+                    <div class="form-group">
+                        <div class="response"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="py-2">
+                            {{organization_from.name.label_tag}}
+                        </div>
+                        <div class="mb-3">
+                            {{organization_from.name}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="mb-0">
+                            <div class="py-2">
+                                {{organization_from.visibility.label_tag}}
+                            </div>
+                            <div class="tom-select-custom">
+                                {{organization_from.visibility}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-5" style="transform: translateY(-20px);">
+                    <button type="submit" class="btn btn-primary">
+                        Create organization
+                    </button>
+                </div>
+                <div class="modal-footer d-block text-center py-sm-5">
+                    <small class="text-cap text-muted">
+                        Trusted by the world's best teams
+                    </small>
+                    <div class="w-85 mx-auto">
+                        <div class="row justify-content-between">
+                            <div class="col">
+                                <img class="img-fluid" src="{% static 'assets/svg/brands/gitlab-gray.svg' %}" alt="Image Description">
+                            </div>
+                            <div class="col">
+                                <img class="img-fluid" src="{% static 'assets/svg/brands/fitbit-gray.svg' %}" alt="Image Description">
+                            </div>
+                            <div class="col">
+                                <img class="img-fluid" src="{% static 'assets/svg/brands/flow-xo-gray.svg' %}" alt="Image Description">
+                            </div>
+                            <div class="col">
+                                <img class="img-fluid" src="{% static 'assets/svg/brands/layar-gray.svg' %}" alt="Image Description">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

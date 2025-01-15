@@ -1,0 +1,162 @@
+{% extends "dashboard/profiles/_base.html" %}
+<!--  -->
+{% load static %}
+<!--  -->
+
+{% block main %}
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card card-body mb-3 mb-lg-5">
+      <h5>Complete your profile</h5>
+
+      <!-- Progress -->
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="progress flex-grow-1">
+          <div
+            class="progress-bar bg-primary"
+            role="progressbar"
+            style="width: 82%"
+            aria-valuenow="82"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+        <span class="ms-4">82%</span>
+      </div>
+      <!-- End Progress -->
+    </div>
+
+    <!-- Sticky Block Start Point -->
+    <div id="accountSidebarNav"></div>
+
+    <div
+      class="js-sticky-block card mb-3 mb-lg-5"
+      data-hs-sticky-block-options='{
+                     "parentSelector": "#accountSidebarNav",
+                     "breakpoint": "lg",
+                     "startPoint": "#accountSidebarNav",
+                     "endPoint": "#stickyBlockEndPoint",
+                     "stickyOffsetTop": 20
+                   }'
+    >
+      <!-- Header -->
+      <div class="card-header">
+        <h4 class="card-header-title">Profile</h4>
+      </div>
+      <!-- End Header -->
+
+      <!-- Body -->
+      <div class="card-body">
+        <ul class="list-unstyled list-py-2 text-dark mb-0">
+          <li class="pb-0"><span class="card-subtitle">About</span></li>
+          <li><i class="bi-person dropdown-item-icon"></i> Ella Lauda</li>
+          <li><i class="bi-briefcase dropdown-item-icon"></i> No department</li>
+          <li><i class="bi-building dropdown-item-icon"></i> Htmlstream</li>
+
+          <li class="pt-4 pb-0"><span class="card-subtitle">Contacts</span></li>
+          <li><i class="bi-at dropdown-item-icon"></i> ella@site.com</li>
+          <li>
+            <i class="bi-phone dropdown-item-icon"></i> +1 (609) 972-22-22
+          </li>
+
+          <li class="pt-4 pb-0"><span class="card-subtitle">Teams</span></li>
+          <li>
+            <i class="bi-people dropdown-item-icon"></i> Member of 7 teams
+          </li>
+          <li>
+            <i class="bi-stickies dropdown-item-icon"></i> Working on 8 projects
+          </li>
+        </ul>
+      </div>
+      <!-- End Body -->
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="d-grid gap-3 gap-lg-5">
+      <div class="card">
+        <!-- Header -->
+        <div class="card-header card-header-content-between">
+          <h4 class="card-header-title">Activity stream</h4>
+
+          <!-- Dropdown -->
+          <div class="dropdown">
+            <button
+              type="button"
+              class="btn btn-ghost-secondary btn-icon btn-sm rounded-circle"
+              id="contentActivityStreamDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi-three-dots-vertical"></i>
+            </button>
+
+            <div
+              class="dropdown-menu dropdown-menu-end mt-1"
+              aria-labelledby="contentActivityStreamDropdown"
+            >
+              <span class="dropdown-header">Settings</span>
+
+              <a class="dropdown-item" href="#">
+                <i class="bi-share-fill dropdown-item-icon"></i> Share
+                connections
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="bi-info-circle dropdown-item-icon"></i> Suggest edits
+              </a>
+
+              <div class="dropdown-divider"></div>
+
+              <span class="dropdown-header">Feedback</span>
+
+              <a class="dropdown-item" href="#">
+                <i class="bi-chat-left-dots dropdown-item-icon"></i> Report
+              </a>
+            </div>
+          </div>
+          <!-- End Dropdown -->
+        </div>
+        <!-- End Header -->
+        <!-- Body -->
+        <!-- <div class="card-body card-body-height" style="height: 30rem">
+          <ul class="step step-icon-xs mb-0">
+          </ul>
+        </div> -->
+        <div
+          class="card-body card-body-height"
+          style="
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <img
+            class="avatar avatar-xxl mb-3"
+            src="{% static 'assets/svg/illustrations-light/oc-error.svg' %}"
+            alt="Image Description"
+            data-hs-theme-appearance="dark"
+          />
+          <p class="card-text">No data to show</p>
+          <a class="btn btn-white btn-sm" href="">Start your Activity</a>
+        </div>
+        <!-- End Body -->
+        <!-- Footer -->
+        <div class="card-footer">
+          <a
+            class="link link-collapse"
+            data-bs-toggle="collapse"
+            href="#collapseActivitySection"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseActivitySection"
+          >
+            <span class="link-collapse-default">View more</span>
+            <span class="link-collapse-active">View less</span>
+          </a>
+        </div>
+        <!-- End Footer -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}

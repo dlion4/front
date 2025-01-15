@@ -3,6 +3,7 @@
         "allauth",
         "authtoken",
         "corsheaders",
+        "dropup",
         "socialaccount",
         "sociallogin",
         "uidb"

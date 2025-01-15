@@ -7,4 +7,12 @@ urlpatterns = [
         "dashboard/",
         include("apps.dashboard.urls", namespace="dashboard"),
     ),
+    path(
+        "profile/",
+        include("apps.profiles.urls", namespace="profile"),
+    ),
+    path(
+        "enterprise/",
+        include("apps.enterprise.urls", namespace="enterprise"),
+    ),
 ]
