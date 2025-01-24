@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <main class="bg-gray-950 flex-grow">
+      <header class="py-7 w-full z-50">
+        <div class="mx-auto max-w-7xl lg:max-w-[85%] px-4 sm:px-6 lg:px-8">
+          <nav class="relative z-50 flex justify-between">
+            <div class="flex items-center md:gap-x-12">
+              <a aria-label="Home" href="/"
+                ><img
+                  alt=""
+                  loading="lazy"
+                  width="209"
+                  height="35"
+                  decoding="async"
+                  data-nimg="1"
+                  class="object-cover hidden md:block"
+                  src="./assets/images/site_logo.svg"
+                  style="color: transparent" /><img
+                  alt=""
+                  loading="lazy"
+                  width="31"
+                  height="40"
+                  decoding="async"
+                  data-nimg="1"
+                  class="object-cover md:hidden ml-6"
+                  src="./assets/images/mobile_site_logo.svg"
+                  style="color: transparent"
+              /></a>
+            </div>
+            <div class="flex items-center gap-x-5 md:gap-x-8">
+              <a
+                class="group inline-flex items-center justify-center rounded-xl py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 w-full bg-tint text-white hover:text-slate-100 hover:bg-dark_tint active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600"
+                href="/signup"
+                ><span
+                  >Start today
+                  <span class="text-slate-300 hidden lg:inline">
+                    - It's Free</span
+                  ></span
+                ></a
+              >
+            </div>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div
+          class="mx-auto max-w-7xl lg:max-w-[85%] px-4 sm:px-6 lg:px-8 pb-4 pt-5 sm:pt-28"
+        >
+          <div
+            class="flex justify-start md:justify-around items-center flex-wrap md:flex-nowrap"
+          >
+            <div>
+              <h1
+                class="text-center lg:text-left max-w-xl [text-shadow:_0_1.8px_3px_var(--tw-shadow-color)] shadow-tint text-5xl font-bold tracking-tight text-white sm:text-6xl"
+              >
+                Let AI take<br />notes for you.
+              </h1>
+              <div
+                class="flex my-9 hover:cursor-pointer justify-center lg:justify-start"
+              >
+                <div
+                  class="bg-tint hover:bg-dark_tint transition-all duration-200 ease-in-out rounded-xl flex py-5 lg:py-6 max-w-min px-16 self-center"
+                >
+                  <h4 class="text-white font-bold text-lg whitespace-nowrap">
+                    Get Started <span class="text-slate-300"> - It’s Free</span>
+                  </h4>
+                </div>
+              </div>
+              <p
+                class="mt-2 sm:mt-6 max-w-lg md:max-w-sm text-xl sm:text-xl font-light tracking-tight text-white text-center lg:text-left"
+              >
+                Any audio, video, or PDF → Instant notes, flashcards, quizzes,
+                and chatbot.
+              </p>
+              <div
+                class="my-6 flex flex-row gap-5 justify-center lg:justify-start"
+              >
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:shadow-[0_0_5px] shadow-secondary rounded-lg transition-all duration-200 ease-in-out"
+                  href="https://apps.apple.com/us/app/turbolearn-ai-note-taker/id6502794561"
+                  ><img
+                    alt="Download on AppStore"
+                    loading="lazy"
+                    width="180"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    class=""
+                    srcset="
+                      /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fappstore.a296f8f5.png&amp;w=256&amp;q=75 1x,
+                      /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fappstore.a296f8f5.png&amp;w=384&amp;q=75 2x
+                    "
+                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fappstore.a296f8f5.png&amp;w=384&amp;q=75"
+                    style="color: transparent" /></a
+                ><a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:shadow-[0_0_5px] shadow-secondary rounded-lg transition-all duration-200 ease-in-out"
+                  href="https://play.google.com/store/apps/details?id=ai.turbolearn"
+                  ><img
+                    alt="Download on PlayStore"
+                    loading="lazy"
+                    width="180"
+                    height="50"
+                    decoding="async"
+                    data-nimg="1"
+                    class=""
+                    srcset="
+                      /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgoogleplay.36932a4e.png&amp;w=256&amp;q=75 1x,
+                      /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgoogleplay.36932a4e.png&amp;w=384&amp;q=75 2x
+                    "
+                    src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgoogleplay.36932a4e.png&amp;w=384&amp;q=75"
+                    style="color: transparent"
+                /></a>
+              </div>
+            </div>
+            <div class="md:w-2/4 w-4/4 mt-4 mx-5">
+              <video
+                autoplay=""
+                loop=""
+                playsinline=""
+                class="rounded-lg overflow-hidden shadow-[0_0_30px] shadow-dark_tint"
+              >
+                <source src="./assets/media/demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <div class="mt-30 lg:mt-16 hidden lg:block pb-4 pt-5">
+            <div class="mt-16 overflow-hidden">
+              <h2 class="text-center text-lg font-bold text-white mb-6">
+                Trusted by students at 3,000+ colleges
+              </h2>
+              <div class="relative overflow-hidden">
+                <div
+                  class="absolute left-0 top-0 bottom-0 w-36 bg-gradient-to-r from-primary_bg to-transparent z-10"
+                ></div>
+                <div
+                  class="absolute right-0 top-0 bottom-0 w-36 bg-gradient-to-l from-primary_bg to-transparent z-10"
+                ></div>
+                <div class="flex overflow-x-hidden">
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Yale University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/yale.315ec777.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Northwestern University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/northwestern.5ab49927.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="MIT"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/mit.4bf8f2f3.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="UT Austin"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/utaustin.70e34597.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Duke University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/duke.6e4adc3f.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Harvard University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/harvard.619cd1ad.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Yale University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/yale.315ec777.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Northwestern University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/northwestern.5ab49927.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="MIT"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/mit.4bf8f2f3.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="UT Austin"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/utaustin.70e34597.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Duke University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/duke.6e4adc3f.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                  <div class="flex-shrink-0 mx-8">
+                    <img
+                      alt="Harvard University"
+                      loading="lazy"
+                      width="150"
+                      height="48"
+                      decoding="async"
+                      data-nimg="1"
+                      class="h-[48px] object-contain grayscale-[1]"
+                      src="/_next/static/media/harvard.619cd1ad.svg"
+                      style="color: transparent"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <section
+          id="testimonials"
+          aria-label="What our customers are saying"
+          class="flex flex-col gap-10 justify-center items-center mt-8 lg:mt-16 bg-gradient-to-t from-[#5E4497] to-primary_bg py-10 pt-16"
+        >
+          <div class="mx-auto max-w-7xl lg:max-w-[85%] px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl md:text-center">
+              <h2 class="text-white font-bold text-center text-4xl md:text-5xl">
+                Join <b class="font-extrabold">500,000+</b> students.
+              </h2>
+            </div>
+            <ul
+              role="list"
+              class="mx-auto mt-4 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-10 lg:max-w-none lg:grid-cols-3"
+            >
+              <li>
+                <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+                  <li>
+                    <figure
+                      class="relative rounded-2xl bg-[#191726] px-10 py-8 shadow-[0_0_3px] shadow-darker_tint_1 flex flex-col h-full"
+                    >
+                      <div class="flex justify-end mb-4">
+                        <svg
+                          viewBox="0 0 100 100"
+                          aria-hidden="true"
+                          width="105"
+                          height="78"
+                          class="fill-slate-100 w-8 h-8"
+                        >
+                          <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <blockquote class="relative flex-grow">
+                        <p class="text-md text-white">
+                          I can focus on understanding concepts, not just
+                          jotting down notes. It's like having a personal study
+                          assistant.
+                        </p>
+                      </blockquote>
+                      <figcaption
+                        class="relative flex items-center gap-3 justify-left pt-6"
+                      >
+                        <div class="w-14 h-14 flex items-center justify-center">
+                          <div class="relative w-full h-0 pb-[100%]">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width="2560"
+                              height="1324"
+                              decoding="async"
+                              data-nimg="1"
+                              class="absolute top-0 left-0 w-full h-full object-contain"
+                              srcset="
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmit.de976d4d.png&amp;w=3840&amp;q=75 1x
+                              "
+                              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmit.de976d4d.png&amp;w=3840&amp;q=75"
+                              style="color: transparent"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="text-lg font-bold text-white">
+                            Sheryl Berge
+                          </div>
+                          <div class="text-md text-white">
+                            Physics Major at MIT
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </li>
+                  <li>
+                    <figure
+                      class="relative rounded-2xl bg-[#191726] px-10 py-8 shadow-[0_0_3px] shadow-darker_tint_1 flex flex-col h-full"
+                    >
+                      <div class="flex justify-end mb-4">
+                        <svg
+                          viewBox="0 0 100 100"
+                          aria-hidden="true"
+                          width="105"
+                          height="78"
+                          class="fill-slate-100 w-8 h-8"
+                        >
+                          <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <blockquote class="relative flex-grow">
+                        <p class="text-md text-white">
+                          The flashcards created are tailored to my learning
+                          style. It's like the AI knows exactly what I need to
+                          study.
+                        </p>
+                      </blockquote>
+                      <figcaption
+                        class="relative flex items-center gap-3 justify-left pt-6"
+                      >
+                        <div class="w-14 h-14 flex items-center justify-center">
+                          <div class="relative w-full h-0 pb-[100%]">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width="2293"
+                              height="2048"
+                              decoding="async"
+                              data-nimg="1"
+                              class="absolute top-0 left-0 w-full h-full object-contain"
+                              srcset="
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fduke.43e03626.png&amp;w=3840&amp;q=75 1x
+                              "
+                              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fduke.43e03626.png&amp;w=3840&amp;q=75"
+                              style="color: transparent"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="text-lg font-bold text-white">
+                            Yash Sharma
+                          </div>
+                          <div class="text-md text-white">
+                            Public Policy Student at Duke
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+                  <li>
+                    <figure
+                      class="relative rounded-2xl bg-[#191726] px-10 py-8 shadow-[0_0_3px] shadow-darker_tint_1 flex flex-col h-full"
+                    >
+                      <div class="flex justify-end mb-4">
+                        <svg
+                          viewBox="0 0 100 100"
+                          aria-hidden="true"
+                          width="105"
+                          height="78"
+                          class="fill-slate-100 w-8 h-8"
+                        >
+                          <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <blockquote class="relative flex-grow">
+                        <p class="text-md text-white">
+                          Love how it generates quizzes from my lectures. Makes
+                          revising so much more efficient and less stressful.
+                        </p>
+                      </blockquote>
+                      <figcaption
+                        class="relative flex items-center gap-3 justify-left pt-6"
+                      >
+                        <div class="w-14 h-14 flex items-center justify-center">
+                          <div class="relative w-full h-0 pb-[100%]">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width="1200"
+                              height="1529"
+                              decoding="async"
+                              data-nimg="1"
+                              class="absolute top-0 left-0 w-full h-full object-contain"
+                              srcset="
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fharvard.fab1f551.png&amp;w=1200&amp;q=75 1x,
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fharvard.fab1f551.png&amp;w=3840&amp;q=75 2x
+                              "
+                              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fharvard.fab1f551.png&amp;w=3840&amp;q=75"
+                              style="color: transparent"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="text-lg font-bold text-white">
+                            Kiehn Po
+                          </div>
+                          <div class="text-md text-white">
+                            Princeton Student
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </li>
+                  <li>
+                    <figure
+                      class="relative rounded-2xl bg-[#191726] px-10 py-8 shadow-[0_0_3px] shadow-darker_tint_1 flex flex-col h-full"
+                    >
+                      <div class="flex justify-end mb-4">
+                        <svg
+                          viewBox="0 0 100 100"
+                          aria-hidden="true"
+                          width="105"
+                          height="78"
+                          class="fill-slate-100 w-8 h-8"
+                        >
+                          <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <blockquote class="relative flex-grow">
+                        <p class="text-md text-white">
+                          It turns my youtube binges into productive study
+                          sessions. It's a game-changer.
+                        </p>
+                      </blockquote>
+                      <figcaption
+                        class="relative flex items-center gap-3 justify-left pt-6"
+                      >
+                        <div class="w-14 h-14 flex items-center justify-center">
+                          <div class="relative w-full h-0 pb-[100%]">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width="800"
+                              height="1222"
+                              decoding="async"
+                              data-nimg="1"
+                              class="absolute top-0 left-0 w-full h-full object-contain"
+                              srcset="
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstanford.57682cbd.png&amp;w=828&amp;q=75  1x,
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstanford.57682cbd.png&amp;w=1920&amp;q=75 2x
+                              "
+                              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstanford.57682cbd.png&amp;w=1920&amp;q=75"
+                              style="color: transparent"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="text-lg font-bold text-white">
+                            Presley Burghardt
+                          </div>
+                          <div class="text-md text-white">
+                            Premed student at Stanford
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+                  <li>
+                    <figure
+                      class="relative rounded-2xl bg-[#191726] px-10 py-8 shadow-[0_0_3px] shadow-darker_tint_1 flex flex-col h-full"
+                    >
+                      <div class="flex justify-end mb-4">
+                        <svg
+                          viewBox="0 0 100 100"
+                          aria-hidden="true"
+                          width="105"
+                          height="78"
+                          class="fill-slate-100 w-8 h-8"
+                        >
+                          <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <blockquote class="relative flex-grow">
+                        <p class="text-md text-white">
+                          I love how it can take an article and break it into
+                          bite-sized materials. Reading academic articles feels
+                          less daunting now.
+                        </p>
+                      </blockquote>
+                      <figcaption
+                        class="relative flex items-center gap-3 justify-left pt-6"
+                      >
+                        <div class="w-14 h-14 flex items-center justify-center">
+                          <div class="relative w-full h-0 pb-[100%]">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width="800"
+                              height="1222"
+                              decoding="async"
+                              data-nimg="1"
+                              class="absolute top-0 left-0 w-full h-full object-contain"
+                              srcset="
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstanford.57682cbd.png&amp;w=828&amp;q=75  1x,
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstanford.57682cbd.png&amp;w=1920&amp;q=75 2x
+                              "
+                              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fstanford.57682cbd.png&amp;w=1920&amp;q=75"
+                              style="color: transparent"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="text-lg font-bold text-white">
+                            Peter Renolds
+                          </div>
+                          <div class="text-md text-white">
+                            Political Science Major
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </li>
+                  <li>
+                    <figure
+                      class="relative rounded-2xl bg-[#191726] px-10 py-8 shadow-[0_0_3px] shadow-darker_tint_1 flex flex-col h-full"
+                    >
+                      <div class="flex justify-end mb-4">
+                        <svg
+                          viewBox="0 0 100 100"
+                          aria-hidden="true"
+                          width="105"
+                          height="78"
+                          class="fill-slate-100 w-8 h-8"
+                        >
+                          <path
+                            d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <blockquote class="relative flex-grow">
+                        <p class="text-md text-white">
+                          I feel like I'm studying smarter, not harder. It's a
+                          boon for anyone who values efficiency.
+                        </p>
+                      </blockquote>
+                      <figcaption
+                        class="relative flex items-center gap-3 justify-left pt-6"
+                      >
+                        <div class="w-14 h-14 flex items-center justify-center">
+                          <div class="relative w-full h-0 pb-[100%]">
+                            <img
+                              alt=""
+                              loading="lazy"
+                              width="2293"
+                              height="2048"
+                              decoding="async"
+                              data-nimg="1"
+                              class="absolute top-0 left-0 w-full h-full object-contain"
+                              srcset="
+                                /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fduke.43e03626.png&amp;w=3840&amp;q=75 1x
+                              "
+                              src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fduke.43e03626.png&amp;w=3840&amp;q=75"
+                              style="color: transparent"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <div class="text-lg font-bold text-white">
+                            Rithik Duvva
+                          </div>
+                          <div class="text-md text-white">
+                            Economics Major at Duke
+                          </div>
+                        </div>
+                      </figcaption>
+                    </figure>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <div
+          class="bg-gradient-to-b from-[#5E4497] to-primary_bg text-white py-32 px-4"
+        >
+          <div class="max-w-4xl mx-auto text-center">
+            <h1
+              class="text-white font-bold tracking-tight text-center text-3xl md:text-5xl mb-5"
+            >
+              Institutional Plans
+            </h1>
+            <p class="text-lg mb-8 text-[#CCCAD1]">
+              Purchase turbolearn for your classroom, club, department, or
+              university.
+            </p>
+            <a href="/institutions"
+              ><button
+                class="bg-tint hover:bg-dark_tint text-white font-bold py-3 px-12 rounded-[10px] transition duration-300"
+              >
+                Learn more
+              </button></a
+            >
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-5 justify-center items-center mt-32 mx-5 xl:mx-0"
+        >
+          <h1
+            class="text-white font-bold tracking-tight text-center text-3xl md:text-5xl"
+          >
+            Features
+          </h1>
+          <p class="text-lg text-center mb-8 text-[#CCCAD1]">
+            Students and professionals use Turbolearn for a range of tasks
+            beyond notetaking.
+          </p>
+          <div
+            class="grid md:grid-cols-8 grid-cols-1 rounded-xl overflow-hidden border border-[#9C9EA3]"
+          >
+            <div
+              class="bg-[#191726] p-6 py-10 sm:p-14 flex flex-col md:col-span-5 border-b md:border-r border-[#9C9EA3]"
+            >
+              <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">
+                Beauty
+              </h2>
+              <p class="text-md sm:text-lg text-gray-300 mb-4">
+                Our notes include tables, diagrams, emojis, and equations.
+              </p>
+              <div class="bg-primary_bg w-fit p-3 rounded-md mb-4">
+                <img
+                  alt="equation"
+                  loading="lazy"
+                  width="291"
+                  height="50"
+                  decoding="async"
+                  data-nimg="1"
+                  class="mr-4 rounded-md"
+                  src="/_next/static/media/equation.5c87caa0.svg"
+                  style="color: transparent"
+                />
+              </div>
+            </div>
+            <div
+              class="bg-[#191726] p-6 py-10 sm:p-14 flex flex-col md:col-span-3 border-b border-[#9C9EA3]"
+            >
+              <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">
+                Multimodality
+              </h2>
+              <p class="text-md sm:text-lg text-gray-300 mb-4">
+                Create notes from audio, video, or PDF.
+              </p>
+              <div class="flex justify-between mt-5">
+                <img
+                  alt="YT"
+                  loading="lazy"
+                  width="50"
+                  height="50"
+                  decoding="async"
+                  data-nimg="1"
+                  class="mr-4"
+                  src="/_next/static/media/youtube.e2599069.svg"
+                  style="color: transparent"
+                /><img
+                  alt="Audio"
+                  loading="lazy"
+                  width="50"
+                  height="50"
+                  decoding="async"
+                  data-nimg="1"
+                  class="mr-4"
+                  src="/_next/static/media/audio.d9e949bc.svg"
+                  style="color: transparent"
+                /><img
+                  alt="PDF"
+                  loading="lazy"
+                  width="50"
+                  height="50"
+                  decoding="async"
+                  data-nimg="1"
+                  class="mr-4"
+                  src="/_next/static/media/pdf.fc465b75.svg"
+                  style="color: transparent"
+                />
+              </div>
+            </div>
+            <div
+              class="bg-[#191726] p-6 py-10 sm:p-14 flex flex-col md:col-span-3 border-b md:border-b-0 md:border-r border-[#9C9EA3]"
+            >
+              <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">
+                Flashcards &amp; Quizzes
+              </h2>
+              <p class="text-md sm:text-lg text-gray-300 mb-4">
+                Review your notes.
+              </p>
+              <div class="flex justify-center space-x-10">
+                <svg
+                  id="flashcards"
+                  class="w-[50px] h-[50px] stroke-2 stroke-tint"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    width="24"
+                    height="24"
+                    stroke="none"
+                    fill="#000000"
+                    opacity="0"
+                  ></rect>
+                  <g transform="matrix(0.45 0 0 0.45 12 12)">
+                    <path
+                      transform=" translate(-26.5, -26)"
+                      d="M 8 4 C 6.9069372 4 6 4.9069372 6 6 L 6 39 C 6 40.093063 6.9069372 41 8 41 L 11.324219 41 L 34.769531 47.916016 L 34.767578 47.914062 C 35.843841 48.234242 37.002819 47.609643 37.322266 46.533203 L 46.914062 14.320312 C 47.233004 13.245582 46.602581 12.090768 45.53125 11.771484 C 45.530599000155156 11.771483364361911 45.52994799984484 11.771483364361911 45.529297 11.771484 L 34 8.3652344 L 34 6 C 34 4.9045455 33.095455 4 32 4 L 8 4 z M 8 6 L 32 6 L 32 39 L 11.556641 39 C 11.490400177470805 38.9933694749439 11.423662822529195 38.9933694749439 11.357422 39 L 8 39 L 8 6 z M 34 10.451172 L 44.962891 13.689453 C 45.001371 13.701693 45.008697 13.7141 44.998047 13.75 L 35.404297 45.962891 C 35.393747 45.998451 35.377631 46.009867 35.337891 45.998047 C 35.33724089923854 45.997395101382104 35.336589898617895 45.99674410076146 35.335938 45.996094 L 18.394531 41 L 32 41 C 33.093063 41 34 40.093063 34 39 L 34 10.451172 z M 20 17 C 20 17 19.851 19.347656 17 19.347656 L 17 21 L 20 21 L 20 30 L 22 30 L 22 17 L 20 17 z"
+                      stroke-linecap="round"
+                    ></path>
+                  </g></svg
+                ><svg
+                  id="quiz"
+                  class="fill-tint w-[50px] h-[50px]"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    width="24"
+                    height="24"
+                    stroke="none"
+                    fill="#000000"
+                    opacity="0"
+                  ></rect>
+                  <g transform="matrix(0.71 0 0 0.71 12 12)">
+                    <path
+                      transform=" translate(-17.5, -16)"
+                      d="M 7 2 C 5.895 2 5 2.895 5 4 L 5 26 C 5 27.105 5.895 28 7 28 L 18.111328 28 C 19.374131 29.234972 21.098244 30 23 30 C 26.86 30 30 26.86 30 23 C 30 22.186 29.859938 21.384906 29.585938 20.628906 C 30.170938 19.845906 30.106531 18.730531 29.394531 18.019531 L 27.980469 16.605469 C 27.589469 16.214469 27.078406 16.019531 26.566406 16.019531 C 26.311406 16.019531 26.058359 16.067063 25.818359 16.164062 C 25.64563 15.789179 25.353994 15.487807 25 15.28125 L 25 9.5 C 25 9.235 24.895031 8.9809688 24.707031 8.7929688 L 18.207031 2.2929688 C 18.019031 2.1049688 17.765 2 17.5 2 L 7 2 z M 17 3.9042969 L 23.095703 10 L 18 10 C 17.448 10 17 9.552 17 9 L 17 3.9042969 z M 9 13 C 9.552 13 10 13.448 10 14 C 10 14.552 9.552 15 9 15 C 8.448 15 8 14.552 8 14 C 8 13.448 8.448 13 9 13 z M 13 13 L 21 13 C 21.552 13 22 13.448 22 14 C 22 14.552 21.552 15 21 15 L 13 15 C 12.448 15 12 14.552 12 14 C 12 13.448 12.448 13 13 13 z M 9 17 C 9.552 17 10 17.448 10 18 C 10 18.552 9.552 19 9 19 C 8.448 19 8 18.552 8 18 C 8 17.448 8.448 17 9 17 z M 13 17 L 19.425781 17 C 18.572518 17.511053 17.84397 18.193607 17.279297 19 L 13 19 C 12.448 19 12 18.552 12 18 C 12 17.448 12.448 17 13 17 z M 22 17 L 24 17 L 24 18.101562 C 24.267602 18.15609 24.521691 18.244104 24.771484 18.339844 C 24.847392 18.369729 24.925673 18.394778 25 18.427734 C 25.262592 18.543625 25.517066 18.67474 25.753906 18.832031 L 26.566406 18.019531 L 27.980469 19.433594 L 27.167969 20.246094 C 27.691969 21.036094 28 21.981 28 23 C 28 25.761 25.761 28 23 28 C 22.827437 28 22.656346 27.991682 22.488281 27.974609 C 19.967303 27.718514 18 25.588438 18 23 C 18 22.285441 18.165474 21.614711 18.435547 21 C 18.698797 20.4 19.073328 19.865391 19.537109 19.417969 C 19.691703 19.268828 19.856047 19.12875 20.029297 19 C 20.600866 18.574836 21.255911 18.257448 21.978516 18.107422 C 21.986516 18.106422 21.993 18.102563 22 18.101562 L 22 18 L 22 17 z M 24.5 20.441406 C 24.205482295262094 20.430277649845028 23.921051337482304 20.549624315363705 23.722656 20.767578 L 22.271484 22.316406 C 22.007172644230227 22.57304508650332 21.905358163294277 22.954215214221776 22.0064937315814 23.308468951446034 C 22.107629299868528 23.662722688670293 22.395336047049216 23.932688765094476 22.75530163651208 24.011103610071487 C 23.11526722597494 24.089518455048506 23.48919535491818 23.963682811536156 23.728516 23.683594 L 25.181641 22.136719 C 25.456463962702912 21.853046612854982 25.538594242338878 21.434201595557507 25.39125285980576 21.06774805000147 C 25.243911477272647 20.701294504445432 24.894700098345762 20.455880682145246 24.5 20.441406 z M 9 21 C 9.552 21 10 21.448 10 22 C 10 22.552 9.552 23 9 23 C 8.448 23 8 22.552 8 22 C 8 21.448 8.448 21 9 21 z M 13 21 L 16.294922 21 C 16.103652 21.637111 16 22.309225 16 23 L 13 23 C 12.448 23 12 22.552 12 22 C 12 21.448 12.448 21 13 21 z"
+                      stroke-linecap="round"
+                    ></path>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div
+              class="bg-[#191726] p-6 py-10 sm:p-14 flex flex-col md:col-span-5"
+            >
+              <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">
+                Chat
+              </h2>
+              <p class="text-md sm:text-lg text-gray-300 mb-4">
+                Chat with your upload and get context dependent answers.
+              </p>
+              <div
+                class="flex justify-center items-center rounded-md bg-primary_bg p-3"
+              >
+                <input
+                  class="w-8/12 text-xs sm:text-sm border-0 px-4 py-3 text-gray-100 placeholder-gray-400 bg-tertiary_bg rounded-lg focus:outline-none focus:border-1 focus:border-tint"
+                  placeholder="Type your question here..."
+                  type="text"
+                />
+                <div
+                  class="bg-tint rounded-lg py-2 px-3 sm:px-6 flex justify-center items-center ml-3 hover:cursor-pointer"
+                >
+                  <div class="text-white font-bold text-xs sm:text-sm">
+                    ✨ Ask ✨
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col gap-28 justify-center items-center mt-32 bg-gradient-to-t pt-32 from-[#5E4497] to-[#0E1014]"
+        >
+          <div
+            class="flex flex-col lg:flex-row gap-28 justify-center items-center"
+          >
+            <div class="flex flex-col gap-10 justify-center items-center">
+              <p class="text-3xl">
+                <b class="font-bold">Scan On Phone</b> or
+                <b class="font-bold">Click</b>
+              </p>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://me-qr.com/l/turbolearn"
+                ><img
+                  alt="https://me-qr.com/l/turbolearn"
+                  loading="lazy"
+                  width="375"
+                  height="375"
+                  decoding="async"
+                  data-nimg="1"
+                  class="rounded-2xl shadow-[0_0_90px] shadow-dark_tint hover:shadow-tint hover:shadow-[0_0_30px] cursor-pointer hover:scale-105 transition-all duration-200 ease-in-out"
+                  srcset="
+                    /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FturbolearnQR.6254a08a.png&amp;w=384&amp;q=75 1x,
+                    /_next/image?url=%2F_next%2Fstatic%2Fmedia%2FturbolearnQR.6254a08a.png&amp;w=750&amp;q=75 2x
+                  "
+                  src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FturbolearnQR.6254a08a.png&amp;w=750&amp;q=75"
+                  style="color: transparent"
+              /></a>
+            </div>
+          </div>
+          <div class="mx-auto max-w-7xl lg:max-w-[85%] px-4 sm:px-6 lg:px-8">
+            <div class="py-16 flex flex-col items-center justify-center">
+              <img
+                alt=""
+                loading="lazy"
+                width="179"
+                height="30"
+                decoding="async"
+                data-nimg="1"
+                class="text-center"
+                src="/_next/static/media/site_logo.e54bdc51.svg"
+                style="color: transparent"
+              />
+              <nav class="mt-10 text-sm" aria-label="quick links">
+                <div class="-my-1 flex justify-center gap-x-6 flex-wrap">
+                  <a
+                    class="text-md inline-block rounded-lg px-2 py-1 font-bold text-secondary hover:text-white"
+                    href="/terms-of-service"
+                    >Terms of Service</a
+                  ><a
+                    class="text-md inline-block rounded-lg px-2 py-1 font-bold text-secondary hover:text-white"
+                    href="/privacy-policy"
+                    >Privacy Policy</a
+                  >
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </main>
+    </main>
+  </body>
+</html>
