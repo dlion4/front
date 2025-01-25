@@ -1,5 +1,7 @@
 name: front
 scripts: {
-  installs: uv run pip-compile  .\requirements/local.in -o .\requirements.txt --no-strip-extras,
-  s: python manage.py runserver 8001
+  compile: uv run pip-compile  .\requirements/local.in -o .\requirements.txt --no-strip-extras,
+  s: python manage.py runserver 8001,
+  db_setup: python manage.py makemigrations && python manage.py migrate,
+  static: python manage.py collectstatic --no-input
 }

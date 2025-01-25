@@ -1,5 +1,6 @@
 import base64
 import hashlib
+
 from django import forms
 from django.core.exceptions import ValidationError
 
@@ -93,3 +94,4 @@ class OrganizationForm(forms.ModelForm):
             self.profile.organizations_count += 1
             self.profile.save()
         return instance
+

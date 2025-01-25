@@ -1,5 +1,6 @@
 # ruff: noqa: ERA001, E501
 """Base settings to build other settings files upon."""
+
 from django.utils.translation import gettext_lazy as _
 import sys
 from pathlib import Path
@@ -92,6 +93,8 @@ LOCAL_APPS = [
     "apps.core",
     "apps.profiles",
     "apps.enterprise",
+    "apps.partials",
+    "apps.enterprise.whatsapp",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -255,33 +258,48 @@ LOGGING = {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
         },
+        "colored": {
+            "()": "colorlog.ColoredFormatter",
+            "format": "%(log_color)s%(levelname)s%(reset)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s",
+            "log_colors": {
+                "DEBUG": "cyan",
+                "INFO": "green",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "red,bg_white",
+            },
+        },
     },
     "handlers": {
         "console": {
             "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },"file": {
+            "class": "colorlog.StreamHandler",
+            "formatter": "colored",  # Use the colored formatter
+        },
+        "file": {
             "level": "DEBUG",
             "class": "logging.FileHandler",
             "filename": "allauth_debug.log",
+            "formatter": "verbose",  # Keep verbose for file logs
         },
-
     },
     "loggers": {
         "django": {
             "handlers": ["console"],
             "level": "INFO",
-            
         },
-       "allauth": {
+        "allauth": {
             "handlers": ["file"],
             "level": "DEBUG",
             "propagate": True,
         },
     },
-    "root": {"level": "INFO", "handlers": ["console"]},
+    "root": {
+        "level": "INFO",
+        "handlers": ["console"],
+    },
 }
+
 
 # Celery
 # ------------------------------------------------------------------------------

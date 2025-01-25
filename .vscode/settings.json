@@ -2,10 +2,21 @@
     "cSpell.words": [
         "allauth",
         "authtoken",
+        "awscli",
+        "axllent",
+        "celerybeat",
+        "celeryworker",
+        "collectstatic",
         "corsheaders",
         "dropup",
+        "letsencrypt",
+        "mailpit",
+        "makemigrations",
+        "redirections",
+        "runserver",
         "socialaccount",
         "sociallogin",
+        "traefik",
         "uidb"
     ]
 }
