@@ -12,8 +12,6 @@ from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.utils.timezone import now
-from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.views.generic.edit import FormView
@@ -29,7 +27,6 @@ class LoginView(FormView):
 
     @method_decorator(csrf_exempt)
     @method_decorator(login_not_required)
-    @method_decorator(require_POST)
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect(settings.LOGIN_REDIRECT_URL)
@@ -38,6 +35,7 @@ class LoginView(FormView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["reset_password"] = PasswordResetForm()
+        context["form"] = self.form_class()
         return context
 
     def post(self, request, *args, **kwargs):
@@ -92,10 +90,10 @@ class LogoutView(AllauthLogoutView):
 
 class UserRegistrationView(FormView):
     form_class = UserSignupForm
+    template_name = "account/signup.html"
 
     @method_decorator(csrf_exempt)
     @method_decorator(login_not_required)
-    @method_decorator(require_POST)
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect(settings.LOGIN_REDIRECT_URL)

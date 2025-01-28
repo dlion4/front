@@ -1,12 +1,14 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.views.decorators.http import require_POST
-from django.http import HttpResponse
-from facebook import GraphAPI
-from .models import Group, GroupMessage
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from facebook import GraphAPI  # type: ignore
+
+from .models import Group
+from .models import GroupMessage
 
 
 @login_required

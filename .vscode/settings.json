@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
         "allauth",
+        "anymail",
         "authtoken",
         "awscli",
         "axllent",
@@ -9,14 +10,24 @@
         "collectstatic",
         "corsheaders",
         "dropup",
+        "endblocktranslate",
+        "endelement",
+        "endslot",
+        "kwasa",
         "letsencrypt",
         "mailpit",
         "makemigrations",
+        "maxage",
+        "ngrok",
+        "pixrem",
+        "popperjs",
         "redirections",
         "runserver",
+        "setvar",
         "socialaccount",
         "sociallogin",
         "traefik",
-        "uidb"
+        "uidb",
+        "whiskeysockets"
     ]
 }

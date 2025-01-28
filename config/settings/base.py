@@ -114,7 +114,7 @@ AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 LOGIN_REDIRECT_URL = "/dashboard/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
-LOGIN_URL = "home"
+LOGIN_URL = "users:login"
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers
@@ -367,9 +367,15 @@ ACCOUNT_FORMS = {
 SOCIALACCOUNT_ADAPTER = "front.users.adapters.SocialAccountAdapter"
 # https://docs.allauth.org/en/latest/socialaccount/configuration.html
 SOCIALACCOUNT_FORMS = {"signup": "front.users.forms.UserSocialSignupForm"}
-# Prevent showing the conset page
+
+# DJANGO ALLAUTH
+# --------------------------------------------------------------------
+# https://docs.allauth.org/en/dev/socialaccount/providers/facebook.html
+
+# Prevent showing the consent page
 SOCIALACCOUNT_LOGIN_ON_GET = True
 LOGOUT_ON_GET = True
+
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         # For each OAuth based provider, either add a ``SocialApp``
@@ -404,6 +410,46 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     "github": {
         "VERIFIED_EMAIL": True,
+        "APPS": [
+            {
+                "client_id": env.str("DJANGO_GITHUB_OAUTH2_CLIENT_ID", ""),
+                "secret": env.str("DJANGO_GITHUB_OAUTH2_CLIENT_SECRET", ""),
+                "key": "",
+                "settings": {
+                    # You can fine tune these settings per app:
+                    "scope": [
+                        "user",
+                        "email",
+                        "read:org",
+                    ],
+                    "auth_params": {
+                        "access_type": "online",
+                    },
+                },
+            },
+        ],
+    },
+    "facebook": {
+        "METHOD": "oauth2",  # Set to 'js_sdk' to use the Facebook connect SDK
+        "SDK_URL": "//connect.facebook.net/{locale}/sdk.js",
+        "SCOPE": ["email", "public_profile"],
+        "AUTH_PARAMS": {"auth_type": "reauthenticate"},
+        "INIT_PARAMS": {"cookie": True},
+        "FIELDS": [
+            "id",
+            "first_name",
+            "last_name",
+            "middle_name",
+            "name",
+            "name_format",
+            "picture",
+            "short_name",
+        ],
+        "EXCHANGE_TOKEN": True,
+        "LOCALE_FUNC": lambda request: "en_US",
+        "VERIFIED_EMAIL": False,
+        "VERSION": "v13.0",
+        "GRAPH_API_URL": "https://graph.facebook.com/v13.0",
         "APPS": [
             {
                 "client_id": env.str("DJANGO_GITHUB_OAUTH2_CLIENT_ID", ""),

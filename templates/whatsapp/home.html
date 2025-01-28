@@ -1,0 +1,192 @@
+{% extends 'whatsapp/base.html' %} {% block content %}
+
+<main id="content" role="main" class="main">
+  <!-- Content -->
+  <div class="content container-fluid">
+    <!-- -->
+    <div class="mb-4">
+      <h5 class="text-white">
+        Thousands of world’s leading companies trust Front
+      </h5>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <a
+          class="btn btn-primary btn-sm"
+          href="javascript:;"
+          data-bs-toggle="modal"
+          data-bs-target="#accountConnectWhatsAppModal"
+        >
+          connect whatsapp account
+        </a>
+        <h1>Link Your WhatsApp</h1>
+        <div id="qr-code"></div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- -->
+
+<div
+  class="modal fade"
+  id="accountConnectWhatsAppModal"
+  tabindex="-1"
+  aria-labelledby="accountConnectWhatsAppModalLabel"
+  style="display: none"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <!-- Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" id="accountConnectWhatsAppModalLabel">
+          Link this to the whatsapp account
+        </h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <!-- End Header -->
+
+      <!-- Body -->
+      <div class="modal-body">
+        <!-- Form -->
+        <form method="post">
+          <div id="previewImage" class="image-preview mb-3">
+            <div id="scanBarCodeImage"></div>
+          </div>
+          <div id="scanResponse"></div>
+        </form>
+        <!-- End Form -->
+      </div>
+      <!-- End Body -->
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    // Get the raw DOM element from the jQuery object
+    const whatsappLinkModal = document.getElementById(
+      "accountConnectWhatsAppModal"
+    );
+    const socket = io("http://localhost:3002");
+    var codeImage = $("#scanBarCodeImage");
+    var scanResponse = $("#scanResponse");
+
+    codeImage.html("Loading...");
+
+    socket.on("connect", (response) => {
+      console.log(response);
+      socket.emit("onboard.client", {
+        userId: "{{ request.user.user_profile.id }}",
+        action: "onboard.client",
+        timestamp: new Date().getTime(),
+      });
+    });
+
+    function restartConnection() {
+      console.log("Restarting connection...");
+      socket.connect(); // Reinitialize the connection
+    }
+    function terminateConnection() {
+      console.log("Terminating connection...");
+      socket.disconnect();
+    }
+
+    if (whatsappLinkModal) {
+      var tItem = $(whatsappLinkModal).find("form");
+      const observer = new MutationObserver((mutationsList) => {
+        mutationsList.forEach((mutation) => {
+          if (mutation.attributeName === "class") {
+            const modalElement = $(mutation.target);
+            if (modalElement.hasClass("show")) {
+              socket.on("qr", (qrImage) => {
+                codeImage.html("Loading...");
+                setTimeout(() => {
+                  codeImage.html(`<img src=${qrImage} />`);
+                }, 1000);
+              });
+              console.log("Modal is now visible!");
+            } else {
+              console.log("Modal is hidden!");
+            }
+          }
+        });
+      });
+
+      observer.observe(whatsappLinkModal, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
+
+    function extractData(input) {
+      if (!input || !input.messages || !Array.isArray(input.messages)) {
+        console.error("Invalid input format");
+        return { type: input?.type || "unknown", messages: [] };
+      }
+
+      const cleanedData = input.messages.map((msg) => ({
+        remoteJid: msg.key?.remoteJid || null,
+        fromMe: msg.key?.fromMe || false,
+        messageId: msg.key?.id || null,
+        timestamp: msg.messageTimestamp || null,
+        senderName: msg.pushName || "Unknown",
+        isBroadcast: msg.broadcast || false,
+        messageStatus: msg.status || null,
+        messageText:
+          msg.message?.conversation ||
+          msg.message?.extendedTextMessage?.text ||
+          null,
+        messageSecret: msg.message?.messageContextInfo?.messageSecret || null,
+        verifiedBusinessName: msg.verifiedBizName || null,
+      }));
+
+      return {
+        type: input.type || "unknown",
+        messages: cleanedData,
+      };
+    }
+
+    async function getCsrfToken() {
+      const response = await fetch("/api/csrf-token/");
+      if (!response.ok) {
+        throw new Error("Failed to fetch CSRF token");
+      }
+      const data = await response.json();
+      return data.csrfToken;
+    }
+
+    socket.on("message.upsert", async (data) => {
+      console.log(data);
+      const { type, messages } = data;
+      const cleaned = extractData(data);
+      console.log(cleaned);
+
+      const csrfToken = await getCsrfToken();
+
+      $.ajax({
+        url: "/api/whatsapp/messages/",
+        type: "POST",
+        data: JSON.stringify(cleaned),
+        contentType: "application/json",
+        headers: {
+          "X-CSRFToken": csrfToken,
+        },
+        success: function (response) {
+          console.log(response);
+        },
+        error: function (error) {
+          console.error(error);
+        },
+      });
+    });
+  });
+</script>
+
+{% endblock content %}

@@ -5,8 +5,9 @@ from django.urls import path
 
 from ._authorize import LoginView
 from ._authorize import LogoutView
+from ._authorize import PasswordResetRequestView
+from ._authorize import UserRegistrationView
 from .actions import views
-from ._authorize import UserRegistrationView, PasswordResetRequestView
 from .views import user_detail_view
 from .views import user_redirect_view
 from .views import user_update_view
@@ -18,6 +19,11 @@ urlpatterns = [
     path("<int:pk>/", view=user_detail_view, name="detail"),
     path("authenticate/", view=LoginView.as_view(), name="login"),
     path("logout/", view=LogoutView.as_view(), name="logout"),
+    path(
+        "login-callback/",
+        view=views.social_login_callback_view,
+        name="login_callback_view",
+    ),
     path(
         "developer-registration/",
         UserRegistrationView.as_view(template_name="account/register.html"),

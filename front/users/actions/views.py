@@ -36,6 +36,7 @@ def check_email_address_for_password_reset(request, *args, **kwargs):
         status=400,
     )
 
+
 @method_decorator(login_not_required, name="dispatch")
 class _PasswordResetView(View):
     form_class = PasswordResetForm
@@ -76,4 +77,11 @@ def check_password_confirmation_view(request, *args, **kwargs):
 
 
 def check_phone_number_view(request, *args, **kwargs):
+    return JsonResponse({}, status=200)
+
+
+def social_login_callback_view(request):
+    print(request.GET)
+    print(request.POST)
+    print(request.body)
     return JsonResponse({}, status=200)

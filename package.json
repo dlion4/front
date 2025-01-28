@@ -1,6 +1,7 @@
 {
   "name": "front",
   "version": "0.1.0",
+  "type": "module",
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
@@ -38,5 +39,8 @@
     "dev": "webpack serve --config webpack/dev.config.js",
     "build": "webpack --config webpack/prod.config.js",
     "static": "webpack --config webpack/prod.config.js && python manage.py collectstatic --no-input"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.9"
   }
 }

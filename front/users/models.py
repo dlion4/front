@@ -84,7 +84,10 @@ class Profile(Model):
         null=True,
     )
     last_name = CharField(  # noqa: DJ001
-        _("Last Name"), max_length=100, blank=True, null=True  # noqa: COM812
+        _("Last Name"),
+        max_length=100,
+        blank=True,
+        null=True,  # noqa: COM812
     )
     avatar_url = URLField(  # noqa: DJ001
         _("Social Avatar"),
@@ -93,11 +96,15 @@ class Profile(Model):
         null=True,
     )
     organizations_count = BigIntegerField(default=0)
-    plan = CharField(max_length=1, choices=(
-        ("F", "Freemium"), # Only 1 Organization with 2 Projects
-        ("S", "Standard"), # 2 Organizations with 4 Projects
-        ("P", "Pro"), # 4 Organizations with 10 Projects
-    ), default="F")
+    plan = CharField(
+        max_length=1,
+        choices=(
+            ("F", "Freemium"),  # Only 1 Organization with 2 Projects
+            ("S", "Standard"),  # 2 Organizations with 4 Projects
+            ("P", "Pro"),  # 4 Organizations with 10 Projects
+        ),
+        default="F",
+    )
 
     class Meta:
         """Meta definition for Profile."""
@@ -109,6 +116,7 @@ class Profile(Model):
     def __str__(self):
         """Unicode representation of Profile."""
         return f"{self.user.username}"
+
     def get_absolute_url(self):
         """Return absolute url for Profile."""
         return ""
@@ -121,3 +129,5 @@ class Profile(Model):
             else f"{self.user.handle_username}".title()
         )
 
+    def profile_latest_organization(self):
+        return self.profile_organizations.first()

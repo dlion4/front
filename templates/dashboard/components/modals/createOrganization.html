@@ -1,98 +1,102 @@
 {% load static %}
 <div class="modal fade" id="createOrganizationModal" tabindex="-1" aria-hidden="true" aria-labelledby="createOrganizationModalLabel">
-    <div class="modal-dialog modal-dialog-centered">
-        <form method="post" action="{% url 'enterprise:actions:create_organization_view' %}" class="create_organization">
+  <div class="modal-dialog modal-dialog-centered">
+    <form method="post" action="{% url 'enterprise:actions:create_organization_view' %}" class="create_organization">
 
+      {% csrf_token %}
+      <div class="modal-content">
 
-            {% csrf_token %}
-            <div class="modal-content">
+        <div class="modal-close">
+          <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm" data-bs-dismiss="modal" aria-label="Close">
+            <i class="bi-x-lg"></i>
+          </button>
+        </div>
+        <div class="modal-body p-sm-5">
+          <div class="text-center">
+            <h4 class="h1">Welcome to Front</h4>
+            <p>Spin your organization or group in no time.</p>
+          </div>
 
+          <div class="btn-group-sm-vertical">
+            <div class="btn-group btn-group-segment btn-group-fill mb-4" role="group" aria-label="Account add card radio button group">
+              <input type="radio" class="btn-check" name="accountAddCardBtnRadio" id="organization" autocomplete="off" checked="">
+              <label class="btn btn-sm" for="organization">Organization</label>
 
-                <div class="modal-close">
-                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="bi-x-lg"></i>
-                    </button>
-                </div>
-                <div class="modal-body p-sm-5">
-                    <div class="text-center">
-                        <h4 class="h1">Welcome to Front</h4>
-                        <p>Spin your organization or group in no time.</p>
-                    </div>
+              <input type="radio" class="btn-check" name="accountAddCardBtnRadio" id="group" autocomplete="off">
+              <label class="btn btn-sm" for="group">
+                Class Group
+                <!-- <span class="badge bg-soft-primary text-primary">Coming soon</span> -->
+              </label>
+            </div>
+          </div>
 
-                    <div class="btn-group-sm-vertical">
-                        <div class="btn-group btn-group-segment btn-group-fill mb-4" role="group" aria-label="Account add card radio button group">
-                            <input type="radio" class="btn-check" name="accountAddCardBtnRadio" id="organization" autocomplete="off" checked="">
-                            <label class="btn btn-sm" for="organization">Organization</label>
+          <div class="form-group">
+            <div class="response"></div>
+          </div>
+          <div class="container-forms">
+            {% include "dashboard/components/modals/onboarding/forms/organization.html" %}
+          </div>
 
-                            <input type="radio" class="btn-check" name="accountAddCardBtnRadio" id="group" autocomplete="off">
-                            <label class="btn btn-sm" for="group">
-                                Class Group
-                                <!-- <span class="badge bg-soft-primary text-primary">Coming soon</span> -->
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="response"></div>
-                    </div>
-                    <div class="container-forms">
-                        {% include "dashboard/components/modals/onboarding/forms/organization.html" %}
-                    </div>
-
-                </div>
-                <div class="px-5" style="transform: translateY(-20px);">
-                    <button type="submit" class="btn btn-primary">
-                        Create organization
-                    </button>
-                </div>
-                <div class="modal-footer d-block text-center py-sm-5">
-                    <small class="text-cap text-muted">
-                        Trusted by the world's best teams
-                    </small>
-                    <div class="w-85 mx-auto">
-                        <div class="row justify-content-between">
-                            <div class="col">
-                                <img class="img-fluid" src="{% static 'assets/svg/brands/gitlab-gray.svg' %}" alt="Image Description">
-                            </div>
-                            <div class="col">
-                                <img class="img-fluid" src="{% static 'assets/svg/brands/fitbit-gray.svg' %}" alt="Image Description">
-                            </div>
-                            <div class="col">
-                                <img class="img-fluid" src="{% static 'assets/svg/brands/flow-xo-gray.svg' %}" alt="Image Description">
-                            </div>
-                            <div class="col">
-                                <img class="img-fluid" src="{% static 'assets/svg/brands/layar-gray.svg' %}" alt="Image Description">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </form>
+        </div>
+        <div class="px-5" style="transform: translateY(-20px);">
+          <button type="submit" class="btn btn-primary">
+            Create organization
+          </button>
+        </div>
+        <div class="modal-footer d-block text-center py-sm-5">
+          <small class="text-cap text-muted">
+            Trusted by the world's best teams
+          </small>
+          <div class="w-85 mx-auto">
+            <div class="row justify-content-between">
+              <div class="col">
+                <img class="img-fluid" src="{% static 'assets/svg/brands/gitlab-gray.svg' %}" alt="Image Description">
+              </div>
+              <div class="col">
+                <img class="img-fluid" src="{% static 'assets/svg/brands/fitbit-gray.svg' %}" alt="Image Description">
+              </div>
+              <div class="col">
+                <img class="img-fluid" src="{% static 'assets/svg/brands/flow-xo-gray.svg' %}" alt="Image Description">
+              </div>
+              <div class="col">
+                <img class="img-fluid" src="{% static 'assets/svg/brands/layar-gray.svg' %}" alt="Image Description">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 
-<script>
+  <script>
     $(document).ready(function () {
-        var formHolder = $("div.container-forms");
-        function updateOnboardingForm(path = "organization", target = formHolder) {
-            formHolder.html("Loading...")
-            var path_ = "{% url 'partials:load_onboard_view' %}?path=" + path;
-            $.get(path_).done(function (response) {
-                target.html(response)
-            }).fail(function (xhrJ, status, error) {
-                console.log(error)
+      var formHolder = $("div.container-forms");
+
+      function updateOnboardingForm(path = "organization", target = formHolder) {
+        formHolder.html("Loading...")
+        var path_ = "{% url 'partials:load_onboard_view' %}?path=" + path;
+        $
+          .get(path_)
+          .done(function (response) {
+            target.fadeIn(5000, function () {
+              $(this).html(response)
             })
+          })
+          .fail(function (xhrJ, status, error) {
+            console.log(error)
+          })
+      }
+      $("input[name=accountAddCardBtnRadio]").on("change", function (event) {
+        // Check if the current radio button is checked
+        if ($(this).is(':checked')) {
+          // Perform your action here
+          var id = $(this).attr("id")
+          if (id === "group") {
+            updateOnboardingForm("group")
+          } else if (id === "organization") {
+            updateOnboardingForm("organization")
+          }
         }
-        $("input[name=accountAddCardBtnRadio]").on("change", function (event) {
-            // Check if the current radio button is checked
-            if ($(this).is(':checked')) {
-                // Perform your action here
-                var id = $(this).attr("id")
-                if (id === "group") {
-                    updateOnboardingForm("group")
-                } else if (id === "organization") {
-                    updateOnboardingForm("organization")
-                }
-            }
-        });
+      });
     });
-</script>
+  </script>

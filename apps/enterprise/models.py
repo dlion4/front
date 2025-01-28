@@ -76,7 +76,7 @@ class Organization(models.Model):
         kwargs_urls = {"uuid": self.hashed_name} | kwargs_urls
 
         # Return the reversed URL
-        # return reverse("dashboard:home", kwargs=kwargs_urls)
+        # return reverse("dashboard:home", kwargs=kwargs_urls)  # noqa: ERA001
         return ""
 
 

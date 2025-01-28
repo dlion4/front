@@ -1,0 +1,13 @@
+curl -x GET http://localhost:8001/api/whatsapp/messages/
+
+
+###
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"key1":"value1","key2":"value2"}' \
+  https://earnkraft.app.n8n.cloud/webhook-test/02069143-8c70-447a-aa05-02c797593676
+
+###
+
+curl -x GET  "https://earnkraft.app.n8n.cloud/webhook-test/02069143-8c70-447a-aa05-02c797593676"

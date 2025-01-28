@@ -1,0 +1,20 @@
+{% extends "client_layout.html" %} {% load i18n %} {% load allauth account %} 
+<!--  -->
+{%
+block header %}{% endblock header %} {% block content %}
+<div class="container mx-auto">
+  <div class="row mx-auto w-full">
+    <div class="card col-md-4 px-4 mx-auto mt-lg-5 mt-md-4">
+      {% element h1 %} {% trans "Sign Up" %} {% endelement %}
+
+      <p>
+        Already have an account?
+        <a href="{% url 'users:login' %}">Login Here</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock content %} {% block footer %}{% endblock footer %}
+<!--  -->
+{% block modal
+%}{% endblock modal %}

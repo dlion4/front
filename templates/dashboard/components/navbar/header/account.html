@@ -1,42 +1,22 @@
 {% load static %}
 
 <div class="dropdown">
-  <a
-    class="navbar-dropdown-account-wrapper"
-    href="javascript:;"
-    id="accountNavbarDropdown"
-    data-bs-toggle="dropdown"
-    aria-expanded="false"
-    data-bs-auto-close="outside"
-    data-bs-dropdown-animation
-  >
+  <a class="navbar-dropdown-account-wrapper" href="javascript:;" id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" data-bs-dropdown-animation="data-bs-dropdown-animation">
     <div class="avatar avatar-sm avatar-circle">
-      <img
-        class="avatar-img"
-        src="{% static 'assets/img/160x160/img9.jpg' %}"
-        alt="Image Description"
-      />
+      <img class="avatar-img" src="{% static 'assets/img/160x160/img9.jpg' %}" alt="Image Description"/>
       <span class="avatar-status avatar-sm-status avatar-status-success"></span>
     </div>
   </a>
 
-  <div
-    class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account"
-    aria-labelledby="accountNavbarDropdown"
-    style="width: 16rem"
-  >
+  <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account" aria-labelledby="accountNavbarDropdown" style="width: 16rem">
     <div class="dropdown-item-text">
       <div class="d-flex align-items-center">
         <div class="avatar avatar-sm avatar-circle">
-          <img
-            class="avatar-img"
-            src="{% static 'assets/img/160x160/img9.jpg' %}"
-            alt="Image Description"
-          />
+          <img class="avatar-img" src="{% static 'assets/img/160x160/img9.jpg' %}" alt="Image Description"/>
         </div>
         <div class="flex-grow-1 ms-3">
-          <h5 class="mb-0">{{profile.full_name}}</h5>
-          <p class="card-text text-body">{{profile.user.site_email}}</p>
+          <h5 class="mb-0">{{profile.full_name|truncatechars:"16"}}</h5>
+          <p class="card-text text-body">{{profile.user.site_email|truncatechars:"18"}}</p>
         </div>
       </div>
     </div>
@@ -45,30 +25,25 @@
 
     <!-- Dropdown -->
     <div class="dropdown">
-      <a
-        class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle"
-        href="javascript:;"
-        id="navSubmenuPagesAccountDropdown1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        >Set status</a
-      >
+      <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown1" data-bs-toggle="dropdown" aria-expanded="false">Set status</a>
 
-      <div
-        class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu"
-        aria-labelledby="navSubmenuPagesAccountDropdown1"
-      >
+      <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown1">
         <a class="dropdown-item" href="#">
-          <span class="legend-indicator bg-success me-1"></span> Available
+          <span class="legend-indicator bg-success me-1"></span>
+          Available
         </a>
         <a class="dropdown-item" href="#">
-          <span class="legend-indicator bg-danger me-1"></span> Busy
+          <span class="legend-indicator bg-danger me-1"></span>
+          Busy
         </a>
         <a class="dropdown-item" href="#">
-          <span class="legend-indicator bg-warning me-1"></span> Away
+          <span class="legend-indicator bg-warning me-1"></span>
+          Away
         </a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#"> Reset status </a>
+        <a class="dropdown-item" href="#">
+          Reset status
+        </a>
       </div>
     </div>
     <!-- End Dropdown -->
@@ -88,9 +63,7 @@
         <div class="flex-grow-1 ms-2">
           <h5 class="mb-0">
             Htmlstream
-            <span class="badge bg-primary rounded-pill text-uppercase ms-1"
-              >PRO</span
-            >
+            <span class="badge bg-primary rounded-pill text-uppercase ms-1">PRO</span>
           </h5>
           <span class="card-text">hs.example.com</span>
         </div>
@@ -101,20 +74,12 @@
 
     <!-- Dropdown -->
     <div class="dropdown">
-      <a
-        class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle"
-        href="javascript:;"
-        id="navSubmenuPagesAccountDropdown2"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        >Customization</a
-      >
+      <a class="navbar-dropdown-submenu-item dropdown-item dropdown-toggle" href="javascript:;" id="navSubmenuPagesAccountDropdown2" data-bs-toggle="dropdown" aria-expanded="false">Customization</a>
 
-      <div
-        class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu"
-        aria-labelledby="navSubmenuPagesAccountDropdown2"
-      >
-        <a class="dropdown-item" href="#"> Invite people </a>
+      <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-sub-menu" aria-labelledby="navSubmenuPagesAccountDropdown2">
+        <a class="dropdown-item" href="#">
+          Invite people
+        </a>
         <a class="dropdown-item" href="#">
           Analytics
           <i class="bi-box-arrow-in-up-right"></i>
@@ -149,7 +114,7 @@
             } else {
               alert(response.message);
             }
-          },
+          }
         });
         return false;
       });

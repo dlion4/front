@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="navbar-vertical-content">
+  <div id="navbarVerticalMenu" class="nav nav-pills nav-vertical card-navbar-nav">
+    <div class="nav-item">
+      <a class="nav-link  {% if request.resolver_match.view_name == 'dashboard:whatsapp:home' %}{% endif %}" href="{% url 'dashboard:whatsapp:home' %}" data-placement="left">
+        <i class="bi-whatsapp nav-icon"></i>
+        <span class="nav-link-title">Discover</span>
+      </a>
+    </div>
+    <span class="dropdown-header mt-4">Communities</span>
+    <small class="bi-three-dots nav-subtitle-replacer"></small>
+    <div class="nav-item">
+      <a class="nav-link  {% if request.resolver_match.view_name == 'dashboard:whatsapp:home' %}{% endif %}" href="{% url 'dashboard:whatsapp:home' %}" data-placement="left">
+        <i class="bi-person-workspace nav-icon"></i>
+        <span class="nav-link-title">Spaces</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a class="nav-link  {% if request.resolver_match.view_name == 'dashboard:whatsapp:home' %}{% endif %}" href="{% url 'dashboard:whatsapp:home' %}" data-placement="left">
+        <i class="bi-whatsapp nav-icon"></i>
+        <span class="nav-link-title">Library</span>
+      </a>
+    </div>
+  </div>
+</div>

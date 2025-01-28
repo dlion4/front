@@ -4,127 +4,128 @@
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
 
-<head>
+  <head>
     <!-- Character Encoding -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <!-- Browser Compatibility -->
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
 
     <!-- Page Title -->
     <title>
-        {% block title %}front | {% block subT %} Project Management System {% endblock subT %} {% endblock title %}
+      {% block title %}front |
+        {% block subT %}
+          Project Management System
+        {% endblock subT %}
+      {% endblock title %}
     </title>
 
     <!-- Viewport Settings -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
 
     <!-- Meta Information -->
-    <meta name="description"
-        content="A Developer-First Project Management System to streamline your workflow and boost productivity." />
-    <meta name="author" content="kwasa" />
-    <meta name="keywords" content="project management, productivity, task tracking, collaboration, developer tools" />
-    <meta name="theme-color" content="#4CAF50" />
+    <meta name="description" content="A Developer-First Project Management System to streamline your workflow and boost productivity."/>
+    <meta name="author" content="kwasa"/>
+    <meta name="keywords" content="project management, productivity, task tracking, collaboration, developer tools"/>
+    <meta name="theme-color" content="#4CAF50"/>
 
     <!-- Open Graph / Social Media Integration -->
-    <meta property="og:title" content="front | Project Management System" />
-    <meta property="og:description"
-        content="Streamline your workflow with front, the ultimate project management tool for developers." />
-    <meta property="og:image" content="" />
-    <meta property="og:type" content="website" />
+    <meta property="og:title" content="front | Project Management System"/>
+    <meta property="og:description" content="Streamline your workflow with front, the ultimate project management tool for developers."/>
+    <meta property="og:image" content=""/>
+    <meta property="og:type" content="website"/>
     <!-- jquery -->
     <script src="{% static 'libs/jquery/3.7.1/jquery.min.js' %}"></script>
 
-    <meta property="og:url" content="{% url 'home' %}" />
+    <meta property="og:url" content="{% url 'home' %}"/>
 
     <!-- Favicon -->
-    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" />
-    <link rel="manifest" href="{% static 'site.webmanifest' %}" />
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}"/>
+    <link rel="manifest" href="{% static 'site.webmanifest' %}"/>
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
     {% block css %}
-    <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="{% static 'assets/css/vendor.min.css' %}">
-    <!-- CSS Front Template -->
-    <link rel="stylesheet" href="{% static 'assets/css/theme.minc619.css?v=1.0' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/theme-dark.min.css' %}">
+      <!-- CSS Implementing Plugins -->
+      <link rel="stylesheet" href="{% static 'assets/css/vendor.min.css' %}">
+      <!-- CSS Front Template -->
+      <link rel="stylesheet" href="{% static 'assets/css/theme.minc619.css?v=1.0' %}">
+      <link rel="stylesheet" href="{% static 'assets/css/theme-dark.min.css' %}">
     {% endblock css %}
-    <!--  -->
+    <!-- -->
     {% block headerScripts %}
-    {% include "dashboard/components/scripts/_layout_header.html" %}
+      {% include "dashboard/components/scripts/_layout_header.html" %}
     {% endblock headerScripts %}
-</head>
+  </head>
 
-<body
-    class="{% block bodyclass %}has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset{% endblock bodyclass %}">
+  <body class="{% block bodyclass %}has-navbar-vertical-aside navbar-vertical-aside-show-xl   footer-offset{% endblock bodyclass %}">
     {% block body %}
-    <script src="{% static 'assets/js/hs.theme-appearance.js' %}"></script>
+      <script src="{% static 'assets/js/hs.theme-appearance.js' %}"></script>
 
-    <script
-        src="{% static 'assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js' %}"></script>
+      <script src="{% static 'assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js' %}"></script>
 
-    {% block header %}
-    <!-- ========== HEADER ========== -->
-    {% include "dashboard/components/navbar/header/index.html" %}
-    <!-- ========== END HEADER ========== -->
-    {% endblock header %}
+      {% block header %}
+        <!-- ========== HEADER ========== -->
+        {% include "dashboard/components/navbar/header/index.html" %}
+        <!-- ========== END HEADER ========== -->
+      {% endblock header %}
 
-    <!-- ========== MAIN CONTENT ========== -->
-    <!-- Navbar Vertical -->
-    {% block sidebar %}
-    <!--  -->
-    {% include "dashboard/components/navbar/sidebar/index.html" %}
-    <!--  -->
-    {% endblock sidebar %}
-    <!-- End Navbar Vertical -->
-    {% block content %}
+      <!-- ========== MAIN CONTENT ========== -->
+      <!-- Navbar Vertical -->
+      {% block sidebar %}
+        <!-- -->
+        {% include "dashboard/components/navbar/sidebar/index.html" %}
+        <!-- -->
+      {% endblock sidebar %}
+      <!-- End Navbar Vertical -->
+      {% block content %}
 
-   <!--  -->
-    {% endblock content %}
-    <!-- ========== END MAIN CONTENT ========== -->
+        <!-- -->
+      {% endblock content %}
+      <!-- ========== END MAIN CONTENT ========== -->
 
-    <!-- Activity -->
-    {% block modal %}
-    {% include "dashboard/components/extra/activityStream.html" %}
+      <!-- Activity -->
+      {% block modal %}
+        <!-- Stream the organization and projects stream activities -->
+        {% include "dashboard/components/extra/activityStream.html" %}
 
-    <!-- Keyboard Shortcuts -->
-    {% include "dashboard/components/extra/KeyboardShortcuts.html" %}
+        <!-- Keyboard Shortcuts -->
+        {% include "dashboard/components/extra/KeyboardShortcuts.html" %}
 
-    <!-- End Keyboard Shortcuts -->
-    <!-- End Activity -->
+        <!-- End Keyboard Shortcuts -->
+        <!-- End Activity -->
 
-    <!-- Create a new user Modal -->
-    {% include "dashboard/components/modals/inviteUser.html" %}
+        <!-- Create a new user Modal -->
+        {% include "dashboard/components/modals/inviteUser.html" %}
 
-    <!-- Create Api Key Modal -->
-    {% include "dashboard/components/modals/createApiKey.html" %}
+        <!-- Create Api Key Modal -->
+        {% include "dashboard/components/modals/createApiKey.html" %}
 
-    <!-- Create Organization Modal -->
-    {% include "dashboard/components/modals/createOrganization.html" %}
+        <!-- Create Organization Modal -->
+        {% include "dashboard/components/modals/createOrganization.html" %}
 
+        <!-- Connect whatsapp account -->
 
-    {% endblock modal %}
-    <!-- End Create a new user Modal -->
-    <!-- ========== END SECONDARY CONTENTS ========== -->
+      {% endblock modal %}
+      <!-- End Create a new user Modal -->
+      <!-- ========== END SECONDARY CONTENTS ========== -->
 
-    <!-- JS Implementing Plugins -->
-    {% block js %}
-    <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+      <!-- JS Implementing Plugins -->
+      {% block js %}
+        <script src="{% static 'assets/js/vendor.min.js' %}"></script>
 
-    <script src="{% static 'assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js' %}"></script>
+        <script src="{% static 'assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js' %}"></script>
 
-    <!-- JS Front -->
-    <script src="{% static 'assets/js/theme.min.js' %}"></script>
-    {% block graphJs %}
-    {% include "dashboard/components/scripts/_layout.html" %}
-    {% endblock graphJs %}
-    <!--  -->
-    {% endblock js %}
-    <!--  -->
-    {% block scripts %}
-    {% endblock scripts %}
-    <!--  -->
+        <!-- JS Front -->
+        <script src="{% static 'assets/js/theme.min.js' %}"></script>
+        {% block graphJs %}
+          {% include "dashboard/components/scripts/_layout.html" %}
+        {% endblock graphJs %}
+        <!-- -->
+      {% endblock js %}
+      <!-- -->
+      {% block scripts %}{% endblock scripts %}
+      <!-- -->
     {% endblock body %}
-</body>
+  </body>
 
 </html>
