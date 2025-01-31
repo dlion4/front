@@ -6,16 +6,16 @@
 
 
 {% block content %}
-<div class="container mx-auto">
+<div class="container mx-auto" style="margin-top: 8rem!important;">
     <div class="row mx-auto w-full">
-        <div class="card col-md-4 px-4 mx-auto mt-lg-5 mt-md-4">
+        <div class="card col-md-4 px-4 py-5 mx-auto mt-lg-5 mt-md-4">
             {% element h1 %}
             {% trans "Sign In" %}
             {% endelement %}
 
             {% if not SOCIALACCOUNT_ONLY %}
             {% setvar link %}
-            <a href="{{ signup_url }}">
+            <a href="{% url 'users:register' %}">
                 {% endsetvar %}
                 {% setvar end_link %}
             </a>

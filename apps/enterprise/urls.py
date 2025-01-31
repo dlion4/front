@@ -5,4 +5,5 @@ app_name = "enterprise"
 
 urlpatterns = [
     path("actions/", include("apps.enterprise.actions.urls", namespace="actions")),
+    path("whatsapp/", include("apps.enterprise.whatsapp.urls", namespace="whatsapp")),
 ]

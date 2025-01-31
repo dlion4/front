@@ -59,6 +59,7 @@ $(document).ready(function () {
                             var data = jqXHR.responseJSON || {
                                 detail: "An Error occurred while processing your request",
                             };
+                            alert(detail)
                             console.error(textStatus, errorThrown);
                             instance.handleFormServerResponse(fm, data);
                         },

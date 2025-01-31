@@ -1,0 +1,44 @@
+{
+    "remoteJid": "120363393992699191@g.us",
+    "fromMe": true,
+    "id": "9BF63CC8FE3B08D42E34BCDBF3BEDB08",
+    "participant": "254745547755@s.whatsapp.net",
+    "author": "~devtide",
+    "broadcast": false,
+    "timestamp": "1/31/2025, 1:22:06 PM",
+    "message": {
+        "conversation": "Test"
+    },
+    "group": {
+        "id": "120363393992699191@g.us",
+        "subject": "WhatsApp API Message JSON ",
+        "subjectOwner": "254745547755@s.whatsapp.net",
+        "subjectTime": 1738169380,
+        "size": 3,
+        "creation": "1/29/2025, 7:49:40 PM",
+        "owner": "254745547755@s.whatsapp.net",
+        "restrict": false,
+        "announce": false,
+        "isCommunity": false,
+        "isCommunityAnnounce": false,
+        "joinApprovalMode": false,
+        "memberAddMode": true,
+        "participants": [
+            {
+                "id": "254714992347@s.whatsapp.net",
+                "admin": null,
+                "phone": "254714992347"
+            },
+            {
+                "id": "254745547755@s.whatsapp.net",
+                "admin": "superadmin",
+                "phone": "254745547755"
+            },
+            {
+                "id": "254758489861@s.whatsapp.net",
+                "admin": null,
+                "phone": "254758489861"
+            }
+        ]
+    }
+}

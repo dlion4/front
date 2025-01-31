@@ -16,7 +16,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.views.generic.edit import FormView
 
-from .forms import AuthenticationForm
+from .forms import AuthenticationForm, UserAdminCreationForm
 from .forms import PasswordResetForm
 from .forms import UserSignupForm
 
@@ -89,7 +89,7 @@ class LogoutView(AllauthLogoutView):
 
 
 class UserRegistrationView(FormView):
-    form_class = UserSignupForm
+    form_class = UserAdminCreationForm
     template_name = "account/signup.html"
 
     @method_decorator(csrf_exempt)
@@ -103,7 +103,7 @@ class UserRegistrationView(FormView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            user = form.save(request=request)
+            user = form.save()
             user.username = user.handle_username
             user.save()
             return JsonResponse(

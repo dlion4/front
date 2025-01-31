@@ -106,6 +106,7 @@ class Profile(Model):
         default="F",
     )
 
+
     class Meta:
         """Meta definition for Profile."""
 

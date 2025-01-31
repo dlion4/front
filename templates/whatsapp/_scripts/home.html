@@ -1,0 +1,215 @@
+<script>
+        function extractData(input) {
+      if (!input || !input.messages || !Array.isArray(input.messages)) {
+        console.error("Invalid input format");
+        return { type: input?.type || "unknown", messages: [] };
+      }
+
+      const cleanedData = input.messages.map((msg) => ({
+        remoteJid: msg.key?.remoteJid || null,
+        fromMe: msg.key?.fromMe || false,
+        messageId: msg.key?.id || null,
+        timestamp: msg.messageTimestamp || null,
+        senderName: msg.pushName || "Unknown",
+        isBroadcast: msg.broadcast || false,
+        messageStatus: msg.status || null,
+        messageText:
+          msg.message?.conversation ||
+          msg.message?.extendedTextMessage?.text ||
+          null,
+        messageSecret: msg.message?.messageContextInfo?.messageSecret || null,
+        verifiedBusinessName: msg.verifiedBizName || null,
+      }));
+
+      return {
+        type: input.type || "unknown",
+        messages: cleanedData,
+      };
+    }
+
+
+      class WhatsAppApiMessageFilter {
+      constructor(message) {
+        this.message = message;
+        this.response = {};
+        this.data = {};
+      }
+      extractMessage() {
+        const messages = this.message?.messages;
+        if (!messages || messages.length === 0) return null;
+        return {
+          messages: messages[0],
+          group: this.message?.groupMetaData,
+        };
+      }
+      filterIncomingMessage() {
+        this.data = this.extractMessage().messages;
+        let group = this.extractMessage().group;
+        const { key, messageTimestamp, pushName, broadcast, message } =
+          this.data;
+        this.response =
+          message?.conversation ||
+          message?.documentWithCaptionMessage?.message?.documentMessage ||
+          message?.documentMessage ||
+          message?.contactMessage ||
+          message?.extendedTextMessage ||
+          message?.videoMessage ||
+          message?.stickerMessage ||
+          message?.audioMessage ||
+          message?.reactionMessage ||
+          message?.imageMessage;
+        const date = new Date(parseInt(messageTimestamp) * 1000);
+        const readableDate = date.toLocaleString();
+
+        if (message?.messageContextInfo) {
+          var messageContextInfo = message.messageContextInfo;
+          this.response = { ...this.response, ...messageContextInfo };
+        }
+        if (group) {
+          this.response = {
+            ...this.response,
+            groupMetaData: {
+              jid: group.id,
+              name: group?.subject,
+              ize: group?.size,
+              participantsList: group.participants,
+              creationDate: group.creation,
+            },
+          };
+        }
+        return {
+          ...key,
+          author: pushName,
+          broadcast,
+          timestamp: readableDate,
+          message: this.response,
+          group: message?.senderKeyDistributionMessage,
+          recipients: this.message?.userReceipt,
+        };
+      }
+
+      cleanedMessage() {
+        return this.filterIncomingMessage();
+      }
+    }
+
+ class WhatsAppApiMessageFilter {
+      constructor(message) {
+        this.message = message;
+        this.response = {};
+        this.data = {};
+      }
+      extractMessage() {
+        const messages = this.message?.messages;
+
+        if (!messages || messages.length === 0) return null;
+        return {
+          messages: messages[0],
+          group: this.message?.groupMetaData,
+        };
+      }
+      filterIncomingMessage() {
+        this.data = this.extractMessage().messages;
+        let group = this.extractMessage().group;
+        const { key, messageTimestamp, pushName, broadcast, message } =
+          this.data;
+        this.response =
+          message?.conversation ||
+          message?.documentWithCaptionMessage?.message?.documentMessage ||
+          message?.documentMessage ||
+          message?.contactMessage ||
+          message?.extendedTextMessage ||
+          message?.videoMessage ||
+          message?.stickerMessage ||
+          message?.audioMessage ||
+          message?.reactionMessage ||
+          message?.imageMessage;
+        const date = new Date(parseInt(messageTimestamp) * 1000);
+        const readableDate = date.toLocaleString();
+
+        if (message?.messageContextInfo) {
+          var messageContextInfo = message.messageContextInfo;
+          this.response = { ...this.response, ...messageContextInfo };
+        }
+        if(message?.conversation){
+          this.response = {
+           conversation: message?.conversation,
+           ...this.response,
+          };
+        }
+        if (group) {
+          this.response = {
+            ...this.response,
+            groupMetaData: {
+              jid: group.id,
+              name: group?.subject,
+              size: group?.size,
+              participantsList: group.participants,
+              creationDate: group.creation,
+            },
+          };
+        }
+        return {
+          ...key,
+          author: pushName,
+          broadcast,
+          timestamp: readableDate,
+          message: this.response,
+          group: message?.senderKeyDistributionMessage,
+          recipients: this.message?.userReceipt,
+        };
+      }
+
+      cleanedMessage() {
+        return this.filterIncomingMessage();
+      }
+    }
+
+
+
+    // minimal working 
+
+      class WhatsAppApiMessageFilter {
+      constructor(message) {
+        this.message = message;
+        this.data = {};
+        this.response = {};
+      }
+
+      extractMessage() {
+        const messages = this.message?.messages;
+        if (!messages || messages.length === 0) return null;
+        return messages[0];
+      }
+
+      filterIncomingMessage() {
+        this.data = this.extractMessage();
+        if (!this.data) return;
+        const { key, messageTimestamp, pushName, broadcast, message } =
+          this.data;
+        this.response =
+          message?.conversation ||
+          message?.documentWithCaptionMessage?.message?.documentMessage ||
+          message?.documentMessage ||
+          message?.contactMessage ||
+          message?.extendedTextMessage ||
+          message?.videoMessage ||
+          message?.imageMessage;
+        const date = new Date(parseInt(messageTimestamp) * 1000);
+        const readableDate = date.toLocaleString();
+        return {
+          ...key,
+          author: pushName,
+          broadcast,
+          timestamp: readableDate,
+          message: this.response,
+        };
+      }
+
+      cleanedMessage() {
+        return this.filterIncomingMessage();
+      }
+    }
+    
+
+</script>

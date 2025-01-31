@@ -1,20 +1,64 @@
-{% extends "client_layout.html" %} {% load i18n %} {% load allauth account %} 
+{% extends "client_layout.html" %} {% load i18n %} 
 <!--  -->
-{%
-block header %}{% endblock header %} {% block content %}
-<div class="container mx-auto">
+{% load allauth account widget_tweaks %}
+<!--  -->
+{% block header %}{% endblock header %} {% block content %}
+<div class="container mx-auto" style="margin-top: 8rem !important">
   <div class="row mx-auto w-full">
-    <div class="card col-md-4 px-4 mx-auto mt-lg-5 mt-md-4">
+    <div class="card col-md-4 px-4 py-5 mx-auto mt-lg-5 mt-md-4">
       {% element h1 %} {% trans "Sign Up" %} {% endelement %}
-
       <p>
         Already have an account?
         <a href="{% url 'users:login' %}">Login Here</a>
       </p>
+
+      <form
+        class="needs-validation"
+        method="post"
+        action="{{request.path}}"
+        id="signupForm"
+      >
+        {% csrf_token %}
+        <!-- Form -->
+        <div class="response"></div>
+        <div class="mb-3">
+          <label class="form-label" for="{{signup_form.email.id_for_label}}"
+            >{{signup_form.email.label}}</label
+          >
+          {% render_field form.email|attr:"class:form-control" %}
+          <span class="invalid-feedback"
+            >Please enter a valid email address.</span
+          >
+        </div>
+        <!-- End Form -->
+
+        <!-- Form -->
+        <div class="mb-3">
+          <label class="form-label" for="{{login_form.password1.id_for_label}}"
+            >{{signup_form.password1.label}}</label
+          >
+          {% render_field form.password1|attr:"class:form-control" %}
+          <small></small>
+          <span class="invalid-feedback">Please enter a valid password.</span>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="{{login_form.password2.id_for_label}}"
+            >{{signup_form.password2.label}}</label
+          >
+            {% render_field form.password2|attr:"class:form-control" %}
+          <small> {{ signup_form.password2.help_text}}</small>
+          <span class="invalid-feedback">Please enter a valid password.</span>
+        </div>
+        <!-- End Form -->
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 {% endblock content %} {% block footer %}{% endblock footer %}
 <!--  -->
-{% block modal
-%}{% endblock modal %}
+{% block modal %} {% endblock modal %}
+
+<!--  -->

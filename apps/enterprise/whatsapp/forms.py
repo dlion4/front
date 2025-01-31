@@ -1,16 +1,16 @@
 from django import forms
 
-from apps.enterprise.whatsapp.models import Group
+from apps.enterprise.whatsapp.models import WhatsAppGroup
 
 
 class GroupForm(forms.ModelForm):
     class Meta:
-        model = Group
+        model = WhatsAppGroup
         fields = [
-            "group_name",
+            "subject",
         ]
         widgets = {
-            "group_name": forms.TextInput(
+            "subject": forms.TextInput(
                 attrs={
                     "class": "form-control",
                     "placeholder": "Whatsapp Group Name",

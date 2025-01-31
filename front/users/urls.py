@@ -26,9 +26,9 @@ urlpatterns = [
     ),
     path(
         "developer-registration/",
-        UserRegistrationView.as_view(template_name="account/register.html"),
+        UserRegistrationView.as_view(template_name="account/signup.html"),
         {
-            "template_name": "users/register.html",
+            "template_name": "users/signup.html",
             "time": str(time.time()),
         },
         name="register",

@@ -70,6 +70,114 @@
 
 <script>
   $(document).ready(function () {
+    class WhatsAppApiMessageFilter {
+      constructor(message) {
+        this.message = message;
+        this.response = {};
+        this.data = {};
+      }
+      extractMessage() {
+        const messages = this.message?.messages;
+        if (!messages || messages.length === 0) return null;
+        return {
+          messages: messages[0],
+          group: this.message?.groupMetaData,
+          mediaData: this.message?.mediaData
+        };
+      }
+      filterIncomingMessage() {
+        this.data = this.extractMessage().messages;
+        let group = this.extractMessage().group;
+        let mediaData = this.extractMessage().mediaData
+        const { key, messageTimestamp, pushName, broadcast, message } =
+          this.data;
+        this.response =
+          message?.conversation ||
+          message?.documentWithCaptionMessage?.message?.documentMessage ||
+          message?.documentMessage ||
+          message?.contactMessage ||
+          message?.extendedTextMessage ||
+          message?.videoMessage ||
+          message?.stickerMessage ||
+          message?.audioMessage ||
+          message?.reactionMessage ||
+          message?.protocolMessage ||
+          message?.imageMessage;
+        const date = new Date(parseInt(messageTimestamp) * 1000);
+        const readableDate = date.toLocaleString();
+
+        if (message?.protocolMessage){
+          const protocol = {...message?.protocolMessage}
+          this.response = {...this.response,  ...protocol }
+        }
+
+        if (message?.messageContextInfo) {
+          var messageContextInfo = message.messageContextInfo;
+          this.response = { ...this.response, ...messageContextInfo };
+        }
+        if (group) {
+          if (message?.conversation) {
+            this.response = {
+              conversation: message.conversation,
+            };
+          }
+          this.response = {
+            ...this.response,
+          };
+        }
+        if (message?.conversation) {
+          this.response = {
+            conversation: message.conversation,
+          };
+        }
+        return {
+          ...key,
+          author: pushName,
+          broadcast,
+          timestamp: readableDate,
+          message: { ...this.response },
+          group: group,
+          mediaData: mediaData,
+          recipients: this.message?.userReceipt,
+        };
+      }
+
+      cleanedMessage() {
+        return this.filterIncomingMessage();
+      }
+    }
+
+    const PathUrl = {
+      getBaseUrl(){
+        return this
+      },
+      api: {},
+      actions: {
+        baseUrl: {
+          path: "/enterprise/whatsapp/actions"
+        },
+        whatsapp: {
+          createMessage: {
+            path: "/enterprise/whatsapp/actions/messages/create/"
+          },
+          groupLookup: {
+            path: "/enterprise/whatsapp/actions/group-lookup/"
+          },
+          createGroup: {
+            path: "/enterprise/whatsapp/actions/group-create/"
+          },
+          createGroupMessage(group_id) {
+            return `/enterprise/whatsapp/actions/group-create/${group_id}/message/`
+          },
+          createDeleteUpdateStatus(member_id=null) {
+            if(!member_id){
+              return "/enterprise/whatsapp/actions/status/create/"
+            }
+            return `/enterprise/whatsapp/actions/status/${member_id}/`
+          }
+        }
+      }
+    }
     // Get the raw DOM element from the jQuery object
     const whatsappLinkModal = document.getElementById(
       "accountConnectWhatsAppModal"
@@ -125,34 +233,6 @@
       });
     }
 
-    function extractData(input) {
-      if (!input || !input.messages || !Array.isArray(input.messages)) {
-        console.error("Invalid input format");
-        return { type: input?.type || "unknown", messages: [] };
-      }
-
-      const cleanedData = input.messages.map((msg) => ({
-        remoteJid: msg.key?.remoteJid || null,
-        fromMe: msg.key?.fromMe || false,
-        messageId: msg.key?.id || null,
-        timestamp: msg.messageTimestamp || null,
-        senderName: msg.pushName || "Unknown",
-        isBroadcast: msg.broadcast || false,
-        messageStatus: msg.status || null,
-        messageText:
-          msg.message?.conversation ||
-          msg.message?.extendedTextMessage?.text ||
-          null,
-        messageSecret: msg.message?.messageContextInfo?.messageSecret || null,
-        verifiedBusinessName: msg.verifiedBizName || null,
-      }));
-
-      return {
-        type: input.type || "unknown",
-        messages: cleanedData,
-      };
-    }
-
     async function getCsrfToken() {
       const response = await fetch("/api/csrf-token/");
       if (!response.ok) {
@@ -165,10 +245,113 @@
     socket.on("message.upsert", async (data) => {
       console.log(data);
       const { type, messages } = data;
-      const cleaned = extractData(data);
+      const cleaned = new WhatsAppApiMessageFilter(data).cleanedMessage();
       console.log(cleaned);
 
       const csrfToken = await getCsrfToken();
+
+      new Promise((resolve, reject) => {
+        if (cleaned?.group) {
+          let groupId = cleaned.group.id;
+          let groupName = cleaned.group.subject;
+
+          $.ajax({
+            type: "GET",
+            url: `${PathUrl.actions.whatsapp.groupLookup.path}?id=${groupId}`,
+            success: function (response) {
+              if (!response.group_exists) {
+                // Group does not exist, create it
+                $.ajax({
+                  type: "POST",
+                  url: `${PathUrl.actions.whatsapp.createGroup.path}`,
+                  data: JSON.stringify({ ...cleaned?.group }),
+                  contentType: "application/json",
+                  success: function (createResponse) {
+                    console.log("Group created:", createResponse);
+                    resolve(createResponse);
+                  },
+                  error: function (createError) {
+                    console.error("Error creating group:", createError);
+                    reject(createError);
+                  },
+                });
+              } else {
+                // Group exists, ignore and continue but after
+                // saving the message into the database
+                // save the message
+                console.log("Group already exists, skipping creation.");
+                $.ajax({
+                  url: `${PathUrl.actions.whatsapp.createGroupMessage(groupId)}`,
+                  type: "POST",
+                  data: JSON.stringify(cleaned),
+                  contentType: "application/json",
+                  headers: {
+                    "X-CSRFToken": csrfToken,
+                  },
+                  success: function (response) {
+                    console.log("Group Message saved in group:", response);
+                    resolve(response);
+                  },
+                  error: function (error) {
+                    console.error("Error saving Group message in group:", error);
+                    reject(error);
+                  },
+                })
+              }
+            },
+            error: function (error) {
+              console.error("Group lookup error:", error);
+              reject(error);
+            },
+          });
+        } else {
+          // save non group messages
+          $.ajax({
+            url: `${PathUrl.actions.whatsapp.createMessage.path}`,
+            type: "POST",
+            data: JSON.stringify(cleaned),
+            contentType: "application/json",
+            headers: {
+              "X-CSRFToken": csrfToken,
+            },
+            success: function (response) {
+              console.log(response);
+              resolve(response);
+            },
+            error: function (error) {
+              console.error(error);
+              reject(error);
+            },
+          })
+        }
+        // save status
+        if(cleaned?.broadcast){
+          // now process as Private message but is_broadcast set to tru
+          $.ajax({
+            url: `${PathUrl.actions.whatsapp.createDeleteUpdateStatus()}`,
+            type: "POST",
+            data: JSON.stringify(cleaned),
+            contentType: "application/json",
+            headers: {
+              "X-CSRFToken": csrfToken,
+            },
+            success: function (response) {
+              console.log(response);
+              resolve(response);
+            },
+            error: function (error) {
+              console.error(error);
+              reject(error);
+            },
+          });
+        }
+      })
+        .then((result) => {
+          console.log("Group processing complete:", result);
+        })
+        .catch((error) => {
+          console.error("Error in group processing:", error);
+        });
 
       $.ajax({
         url: "/api/whatsapp/messages/",
