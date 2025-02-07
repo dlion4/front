@@ -125,7 +125,7 @@ django==5.1.4
     #   django-timezone-field
     #   djangorestframework
     #   drf-spectacular
-django-allauth[mfa]==0.63.6
+django-allauth[mfa]==65.4.0
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
 django-anymail[amazon-ses]==11.0.1
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\production.in
