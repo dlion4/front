@@ -295,7 +295,7 @@ propcache==0.2.1
     # via
     #   aiohttp
     #   yarl
-psycopg[c]==3.2.1
+psycopg[c]==3.2.6
     # via
     #   -r .\requirements/local.in
     #   -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\production.in
