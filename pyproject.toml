@@ -32,7 +32,7 @@ dependencies = [
     "django-webpack-loader==3.1.0",
     "Werkzeug[watchdog]==3.0.3",
     "ipdb==0.13.13",
-    "psycopg[c]==3.2.1",
+    "psycopg[c]==3.2.6",
     "watchfiles==0.21.0",
     # Production Deps
     "mypy==1.10.0",
@@ -52,7 +52,7 @@ dependencies = [
     "django-coverage-plugin==3.1.0",
     "pytest-django==4.8.0",
     "gunicorn==22.0.0",
-    "psycopg[c]==3.2.1",
+    "psycopg[c]==3.2.6",
     "sentry-sdk==2.10.0",
     "django-storages[s3]==1.14.4",
     "django-anymail[amazon-ses]==11.0.1",
