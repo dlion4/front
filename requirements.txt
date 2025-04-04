@@ -127,7 +127,7 @@ django==5.1.4
     #   drf-spectacular
 django-allauth[mfa]==0.63.6
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
-django-anymail[amazon-ses]==11.0.1
+django-anymail[amazon-ses]==13.0
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\production.in
 django-celery-beat==2.7.0
     # via -r C:\Users\liont\OneDrive\Desktop\metronic\front\front\requirements\base.in
